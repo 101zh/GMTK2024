@@ -7,15 +7,29 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    public LayerMask groundLayer;
+    public Transform groundDetectionOrigin;
+    bool isGrounded = false;
+
     public float inputThreshold = 0.05f;
     float moveInput;
     float moveInputPrev;
+
+    [Header("Scale")]
+    public float scaleFactor;
 
     [Header("Walking")]
     public float acceleration;
     public float topSpeed;
     public float deceleration;
     public float horizontalSpeedThreshold = 0.0f;
+
+    [Header("Gravity")]
+    public float gravity;
+    public float terminalVelocity;
+
+    [Header("Jumping")]
+    public float jumpForce;
 
     private void Awake()
     {
@@ -25,14 +39,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.gravityScale = gravity;
+        Vector2 v = rb.velocity;
+
         moveInput = Input.GetAxisRaw("Horizontal");
         if (Mathf.Abs(moveInput) >= inputThreshold)
             moveInputPrev = moveInput;
+
+        // Ground Detection
+        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(scaleFactor * 0.95f, 0.1f * scaleFactor), 0, groundLayer))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        // Jump
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+
+        // Clamp Falling Speed
+        if (Mathf.Abs(v.y) > terminalVelocity)
+        {
+            rb.velocity = new Vector2(v.x, Mathf.Sign(v.y) * terminalVelocity);
+        }
     }
 
     private void FixedUpdate()
     {
-        // Horizontal Movement
+        // -- Horizontal Movement -- //
         
         Vector2 v = rb.velocity;
 
@@ -61,8 +100,19 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                rb.velocity = Vector2.zero;
+                rb.velocity = new Vector2(0, v.y);
             }
         }
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    void ChangeSize(float size)
+    {
+        scaleFactor = size;
+        transform.localScale = Vector2.one * scaleFactor;
     }
 }
