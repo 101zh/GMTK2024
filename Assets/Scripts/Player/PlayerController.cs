@@ -47,14 +47,10 @@ public class PlayerController : MonoBehaviour
             moveInputPrev = moveInput;
 
         // Ground Detection
-        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(scaleFactor * 0.95f, 0.1f * scaleFactor), 0, groundLayer))
-        {
+        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(scaleFactor * 0.9f, 0.1f * scaleFactor), 0, groundLayer))
             isGrounded = true;
-        }
         else
-        {
             isGrounded = false;
-        }
 
         // Jump
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
@@ -98,9 +94,11 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForce(Vector2.right * -Mathf.Sign(v.x) * deceleration, ForceMode2D.Force);
             }
-            else
+            else if (v.x != 0)
             {
+                Debug.Log("set to zero");
                 rb.velocity = new Vector2(0, v.y);
+                moveInputPrev = 0;
             }
         }
     }

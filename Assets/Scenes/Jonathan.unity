@@ -888,9 +888,9 @@ MonoBehaviour:
   topSpeed: 5
   deceleration: 30
   horizontalSpeedThreshold: 0
-  gravity: 1
-  terminalVelocity: 6
-  jumpForce: 6
+  gravity: 2
+  terminalVelocity: 20
+  jumpForce: 9
 --- !u!1 &1668981854
 GameObject:
   m_ObjectHideFlags: 0
