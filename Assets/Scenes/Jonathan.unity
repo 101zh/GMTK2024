@@ -891,6 +891,7 @@ MonoBehaviour:
   gravity: 2
   terminalVelocity: 20
   jumpForce: 9
+  jumpBufferTime: 0.12
 --- !u!1 &1668981854
 GameObject:
   m_ObjectHideFlags: 0

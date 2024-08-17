@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,7 +32,10 @@ public class PlayerController : MonoBehaviour
     public float terminalVelocity;
 
     [Header("Jumping")]
+    bool shouldJump;
+    bool jumpBuffering = false;
     public float jumpForce;
+    public float jumpBufferTime;
 
     private void Awake()
     {
@@ -48,13 +54,29 @@ public class PlayerController : MonoBehaviour
 
         // Ground Detection
         if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(scaleFactor * 0.9f, 0.1f * scaleFactor), 0, groundLayer))
+        {
             isGrounded = true;
+
+            // Jump Buffer Check
+            if (jumpBuffering)
+            {
+                StopCoroutine(JumpBuffer());
+                jumpBuffering = false;
+                shouldJump = true;
+            }
+        }
         else
             isGrounded = false;
 
         // Jump
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (isGrounded)
+                shouldJump = true;
+            else if (!jumpBuffering)
+                StartCoroutine(JumpBuffer());
+        }
+        if (shouldJump) {
             Jump();
         }
 
@@ -96,7 +118,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (v.x != 0)
             {
-                Debug.Log("set to zero");
                 rb.velocity = new Vector2(0, v.y);
                 moveInputPrev = 0;
             }
@@ -105,6 +126,8 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        shouldJump = false;
+        jumpBuffering = false; // Just in case
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
@@ -112,5 +135,12 @@ public class PlayerController : MonoBehaviour
     {
         scaleFactor = size;
         transform.localScale = Vector2.one * scaleFactor;
+    }
+
+    IEnumerator JumpBuffer()
+    {
+        jumpBuffering = true;
+        yield return new WaitForSeconds(jumpBufferTime);
+        jumpBuffering = false;
     }
 }
