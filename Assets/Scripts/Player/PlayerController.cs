@@ -1,16 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using UnityEditor;
-using UnityEditor.Build;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
+    BoxCollider2D bc;
 
     public LayerMask groundLayer;
     public Transform groundDetectionOrigin;
@@ -24,9 +19,9 @@ public class PlayerController : MonoBehaviour
     public float defaultScale = 1.0f;
     public float bigScale = 1.5f;
     public float smallScale = 0.5f;
-    int currentSize;
-    float prevScale = 1.0f;
-    float currentScale = 1.0f;
+    int currentSize; // Int 0, 1, or 2
+    float prevScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
+    float currentScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
 
     [Header("Walking")]
     public float smallAcceleration;
@@ -64,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
         currentSize = 1;
         ChangeSize(1);
     }
@@ -79,7 +75,7 @@ public class PlayerController : MonoBehaviour
             moveInputPrev = moveInput;
 
         // Ground Detection
-        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(defaultScale * 0.9f, 0.1f * defaultScale), 0, groundLayer))
+        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(currentScale * 0.2f, 0.1f * currentScale), 0, groundLayer))
         {
             isGrounded = true;
 
