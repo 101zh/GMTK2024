@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEngine;
@@ -21,32 +22,49 @@ public class PlayerController : MonoBehaviour
 
     [Header("Scale")]
     public float defaultScale = 1.0f;
-    public float growScale = 1.5f;
-    public float shrinkScale = 0.5f;
-    float currentScale;
-    float scaleRatio;
+    public float bigScale = 1.5f;
+    public float smallScale = 0.5f;
+    int currentSize;
+    float prevScale = 1.0f;
+    float currentScale = 1.0f;
 
     [Header("Walking")]
-    public float acceleration;
-    public float topSpeed;
-    public float deceleration;
+    public float smallAcceleration;
+    public float smallTopSpeed;
+    public float smallDeceleration;
+    [Space(10)]
+    public float defaultAcceleration;
+    public float defaultTopSpeed;
+    public float defaultDeceleration;
+    [Space(10)]
+    public float bigAcceleration;
+    public float bigTopSpeed;
+    public float bigDeceleration;
+    [Space(15)]
     public float horizontalSpeedThreshold = 0.0f;
+
+    float acceleration;
+    float topSpeed;
+    float deceleration;
 
     [Header("Gravity")]
     public float gravity;
     public float terminalVelocity;
 
     [Header("Jumping")]
+    public float smallJumpForce;
+    public float defaultJumpForce;
+    public float bigJumpForce;
+    public float jumpBufferTime;
+    float jumpForce;
+
     bool shouldJump;
     bool jumpBuffering = false;
-    public float jumpForce;
-    public float jumpBufferTime;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentScale = defaultScale;
-        scaleRatio = 1.0f;
+        currentSize = 1;
         ChangeSize(1);
     }
 
@@ -94,7 +112,14 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(v.x, Mathf.Sign(v.y) * terminalVelocity);
         }
 
-        if (Input.GetKey(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+            ChangeSize(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ChangeSize(1);
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             ChangeSize(0);
         }
@@ -114,15 +139,12 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Sign(moveInput) != Mathf.Sign(v.x))
                 force += deceleration;
 
-            rb.AddForce(Vector2.right * moveInput * force / scaleRatio, ForceMode2D.Force);
+            rb.AddForce(Vector2.right * moveInput * force, ForceMode2D.Force);
 
             // Limit Horizontal Speed
-            float speedLimit = topSpeed;
-            if (scaleRatio != 1)
-                topSpeed /= speedLimit * 1f;
-            if (Mathf.Abs(v.x) > speedLimit)
+            if (Mathf.Abs(v.x) > topSpeed)
             {
-                rb.velocity = new Vector2(Mathf.Sign(v.x) * speedLimit, v.y);
+                rb.velocity = new Vector2(Mathf.Sign(v.x) * topSpeed, v.y);
             }
         }
         else
@@ -130,7 +152,7 @@ public class PlayerController : MonoBehaviour
             // Decelerate
             if (v.x * Mathf.Sign(moveInputPrev) > horizontalSpeedThreshold)
             {
-                rb.AddForce(Vector2.right * -Mathf.Sign(v.x) * deceleration / scaleRatio, ForceMode2D.Force);
+                rb.AddForce(Vector2.right * -Mathf.Sign(v.x) * deceleration, ForceMode2D.Force);
             }
             else if (v.x != 0)
             {
@@ -144,32 +166,53 @@ public class PlayerController : MonoBehaviour
     {
         shouldJump = false;
         jumpBuffering = false; // Just in case
-        rb.AddForce(Vector2.up * jumpForce * scaleRatio, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
 
     // Size 0 = Shrink
     // Size 1 = Normal
     // Size 2 = Grow
-    void ChangeSize(int size)
+    public void ChangeSize(int size)
     {
         switch (size)
         {
             case 0:
-                transform.localScale = Vector2.one * shrinkScale;
-                currentScale = shrinkScale;
+                transform.localScale = Vector2.one * smallScale;
+                currentSize = 0;
+                acceleration = smallAcceleration;
+                topSpeed = smallTopSpeed;
+                deceleration = smallDeceleration;
+                jumpForce = smallJumpForce;
+
+                prevScale = currentScale;
+                currentScale = smallScale;
                 break;
             case 1:
                 transform.localScale = Vector2.one * defaultScale;
+                currentSize = 1;
+                acceleration = defaultAcceleration;
+                topSpeed = defaultTopSpeed;
+                deceleration = defaultDeceleration;
+                jumpForce = defaultJumpForce;
+
+                prevScale = currentScale;
                 currentScale = defaultScale;
                 break;
             case 2:
-                transform.localScale = Vector2.one * growScale;
-                currentScale = growScale;
+                transform.localScale = Vector2.one * bigScale;
+                currentSize = 2;
+                acceleration = bigAcceleration;
+                topSpeed = bigTopSpeed;
+                deceleration = bigDeceleration;
+                jumpForce = bigJumpForce;
+
+                prevScale = currentScale;
+                currentScale = bigScale;
                 break;
         }
 
-        scaleRatio = (currentScale / defaultScale);
+        transform.Translate(Vector2.up * ((currentScale - prevScale) / 2f));
     }
 
     IEnumerator JumpBuffer()

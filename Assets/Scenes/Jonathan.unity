@@ -883,16 +883,24 @@ MonoBehaviour:
     m_Bits: 8
   groundDetectionOrigin: {fileID: 2084516999}
   inputThreshold: 0.05
-  defaultScale: 1
-  growScale: 1.5
-  shrinkScale: 0.5
-  acceleration: 30
-  topSpeed: 5
-  deceleration: 30
+  defaultScale: 0.8
+  bigScale: 1.5
+  smallScale: 0.5
+  smallAcceleration: 50
+  smallTopSpeed: 6
+  smallDeceleration: 50
+  defaultAcceleration: 40
+  defaultTopSpeed: 5
+  defaultDeceleration: 50
+  bigAcceleration: 5
+  bigTopSpeed: 2
+  bigDeceleration: 20
   horizontalSpeedThreshold: 0
-  gravity: 2
+  gravity: 3
   terminalVelocity: 20
-  jumpForce: 9
+  smallJumpForce: 6.5
+  defaultJumpForce: 9
+  bigJumpForce: 12
   jumpBufferTime: 0.12
 --- !u!1 &1668981854
 GameObject:
