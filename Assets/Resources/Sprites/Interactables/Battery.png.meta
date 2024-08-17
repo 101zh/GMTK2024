@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: f838ccb382de63247976b7a383090f8e
+=======
+guid: 11c579c9516b95d4e9cd389b22b11dab
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,6 +98,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< Updated upstream
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,6 +112,8 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+=======
+>>>>>>> Stashed changes
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 60176dfca78857947b4535b7d9059325
+=======
+guid: 7e92071d1863a064da16e3a5730dc42e
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +38,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< Updated upstream
     filterMode: 0
+=======
+    filterMode: 1
+>>>>>>> Stashed changes
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +51,20 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< Updated upstream
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   spritePixelsToUnits: 16
+=======
+  spritePixelsToUnits: 100
+>>>>>>> Stashed changes
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,6 +88,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< Updated upstream
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -85,6 +102,8 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+=======
+>>>>>>> Stashed changes
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -94,7 +113,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< Updated upstream
     buildTarget: iPhone
+=======
+    buildTarget: Standalone
+>>>>>>> Stashed changes
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -134,6 +157,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< Updated upstream
     sprites:
     - serializedVersion: 2
       name: GMTKTileMapEmission_0
@@ -702,6 +726,9 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+    sprites: []
+>>>>>>> Stashed changes
     outline: []
     physicsShape: []
     bones: []
@@ -712,6 +739,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< Updated upstream
     nameFileIdTable:
       GMTKTileMapEmission_0: 940315167
       GMTKTileMapEmission_1: -243034861
@@ -740,6 +768,9 @@ TextureImporter:
       GMTKTileMapEmission_7: -449725194
       GMTKTileMapEmission_8: -1224974047
       GMTKTileMapEmission_9: -317086261
+=======
+    nameFileIdTable: {}
+>>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
