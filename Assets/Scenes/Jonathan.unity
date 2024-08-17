@@ -883,7 +883,9 @@ MonoBehaviour:
     m_Bits: 8
   groundDetectionOrigin: {fileID: 2084516999}
   inputThreshold: 0.05
-  scaleFactor: 0.75
+  defaultScale: 1
+  growScale: 1.5
+  shrinkScale: 0.5
   acceleration: 30
   topSpeed: 5
   deceleration: 30

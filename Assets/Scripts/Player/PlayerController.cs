@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEngine;
@@ -19,7 +20,11 @@ public class PlayerController : MonoBehaviour
     float moveInputPrev;
 
     [Header("Scale")]
-    public float scaleFactor;
+    public float defaultScale = 1.0f;
+    public float growScale = 1.5f;
+    public float shrinkScale = 0.5f;
+    float currentScale;
+    float scaleRatio;
 
     [Header("Walking")]
     public float acceleration;
@@ -40,6 +45,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentScale = defaultScale;
+        scaleRatio = 1.0f;
+        ChangeSize(1);
     }
 
     // Update is called once per frame
@@ -53,7 +61,7 @@ public class PlayerController : MonoBehaviour
             moveInputPrev = moveInput;
 
         // Ground Detection
-        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(scaleFactor * 0.9f, 0.1f * scaleFactor), 0, groundLayer))
+        if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(defaultScale * 0.9f, 0.1f * defaultScale), 0, groundLayer))
         {
             isGrounded = true;
 
@@ -85,6 +93,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(v.x, Mathf.Sign(v.y) * terminalVelocity);
         }
+
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            ChangeSize(0);
+        }
     }
 
     private void FixedUpdate()
@@ -101,12 +114,15 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Sign(moveInput) != Mathf.Sign(v.x))
                 force += deceleration;
 
-            rb.AddForce(Vector2.right * moveInput * force, ForceMode2D.Force);
-            
+            rb.AddForce(Vector2.right * moveInput * force / scaleRatio, ForceMode2D.Force);
+
             // Limit Horizontal Speed
-            if (Mathf.Abs(v.x) > topSpeed)
+            float speedLimit = topSpeed;
+            if (scaleRatio != 1)
+                topSpeed /= speedLimit * 1f;
+            if (Mathf.Abs(v.x) > speedLimit)
             {
-                rb.velocity = new Vector2(Mathf.Sign(v.x) * topSpeed, v.y);
+                rb.velocity = new Vector2(Mathf.Sign(v.x) * speedLimit, v.y);
             }
         }
         else
@@ -114,7 +130,7 @@ public class PlayerController : MonoBehaviour
             // Decelerate
             if (v.x * Mathf.Sign(moveInputPrev) > horizontalSpeedThreshold)
             {
-                rb.AddForce(Vector2.right * -Mathf.Sign(v.x) * deceleration, ForceMode2D.Force);
+                rb.AddForce(Vector2.right * -Mathf.Sign(v.x) * deceleration / scaleRatio, ForceMode2D.Force);
             }
             else if (v.x != 0)
             {
@@ -128,13 +144,32 @@ public class PlayerController : MonoBehaviour
     {
         shouldJump = false;
         jumpBuffering = false; // Just in case
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * jumpForce * scaleRatio, ForceMode2D.Impulse);
     }
 
-    void ChangeSize(float size)
+
+    // Size 0 = Shrink
+    // Size 1 = Normal
+    // Size 2 = Grow
+    void ChangeSize(int size)
     {
-        scaleFactor = size;
-        transform.localScale = Vector2.one * scaleFactor;
+        switch (size)
+        {
+            case 0:
+                transform.localScale = Vector2.one * shrinkScale;
+                currentScale = shrinkScale;
+                break;
+            case 1:
+                transform.localScale = Vector2.one * defaultScale;
+                currentScale = defaultScale;
+                break;
+            case 2:
+                transform.localScale = Vector2.one * growScale;
+                currentScale = growScale;
+                break;
+        }
+
+        scaleRatio = (currentScale / defaultScale);
     }
 
     IEnumerator JumpBuffer()
