@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GunBlue
-  m_Shader: {fileID: -6465566751694194690, guid: 924e6edb53184d44c9c97613bef41223, type: 3}
+  m_Name: TileMapRed
+  m_Shader: {fileID: -6465566751694194690, guid: a52952076bc3ef14c8ea29992dd6b58f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 779e4fa4ec6663c4b97cc1a8fb94f922, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60176dfca78857947b4535b7d9059325, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e2d2da2c7e3362e4fa610ac32a9dad40, type: 3}
+        m_Texture: {fileID: 2800000, guid: 38769af65b38d2145bed59369de657a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -46,9 +46,9 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 16, a: 0}
+    - _Color: {r: 4, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &7725992618807695720
+--- !u!114 &7570621293858361619
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
