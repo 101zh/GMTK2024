@@ -106,14 +106,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (isGrounded)
                 shouldJump = true;
             else if (!jumpBuffering)
                 StartCoroutine(JumpBuffer());
         }
-        if (shouldJump) {
+        if (shouldJump)
+        {
             Jump();
         }
 
@@ -123,7 +124,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(v.x, Mathf.Sign(v.y) * terminalVelocity);
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace)) {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
             ChangeSize(2);
         }
         if (Input.GetKeyDown(KeyCode.Return))
@@ -139,7 +141,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // -- Horizontal Movement -- //
-        
+
         Vector2 v = rb.velocity;
 
         if (Mathf.Abs(moveInput) >= inputThreshold)
@@ -267,7 +269,7 @@ public class PlayerController : MonoBehaviour
                     transform.Translate(Vector2.down * hit.distance);
                 }
             }
-        }            
+        }
     }
 
     IEnumerator JumpBuffer()
