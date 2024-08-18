@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
-    BoxCollider2D bc;
+    CapsuleCollider2D capCollider;
 
     public LayerMask groundLayer;
     public Transform groundDetectionOrigin;
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
+        capCollider = GetComponent<CapsuleCollider2D>();
         currentSize = 1;
         ChangeSize(1);
     }
