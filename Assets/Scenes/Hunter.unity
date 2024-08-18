@@ -13755,8 +13755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc54c3e381ee9748855b8bf5ac3a9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedUpTile: {fileID: 11400000, guid: 151119c36ccc754459d90f38f3d1faae, type: 2}
-  tileColor: blue
+  usedUpPad: {fileID: 11400000, guid: 151119c36ccc754459d90f38f3d1faae, type: 2}
+  padColor: blue
   tileLocations: []
 --- !u!1 &2084516998
 GameObject:
@@ -14221,8 +14221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc54c3e381ee9748855b8bf5ac3a9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedUpTile: {fileID: 11400000, guid: 151119c36ccc754459d90f38f3d1faae, type: 2}
-  tileColor: red
+  usedUpPad: {fileID: 11400000, guid: 151119c36ccc754459d90f38f3d1faae, type: 2}
+  padColor: red
   tileLocations: []
 --- !u!66 &2092639631
 CompositeCollider2D:
