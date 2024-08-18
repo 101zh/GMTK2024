@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -98,8 +99,11 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
 
         // Stop Sliding
-        if (!shouldMove && !isJumping && isGrounded)
+        if (!shouldMove && !isJumping && isGrounded && rb.constraints != RigidbodyConstraints2D.FreezeAll)
+        {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            RayMoveFloor();
+        }
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space))
@@ -233,6 +237,37 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(Vector2.up * ((currentScale - prevScale) / 2f));
+    }
+
+    void RayMoveFloor()
+    {
+        // Its a mess, i know
+        // But it works
+
+        Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - (currentScale / 2f));
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
+        if (hit)
+        {
+            transform.Translate(Vector2.down * hit.distance);
+        }
+        else
+        {
+            rayOrigin = new Vector2(transform.position.x + (capCollider.size.x / 2f), transform.position.y - (currentScale / 2f));
+            hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
+            if (hit)
+            {
+                transform.Translate(Vector2.down * hit.distance);
+            }
+            else
+            {
+                rayOrigin = new Vector2(transform.position.x - (capCollider.size.x / 2f), transform.position.y - (currentScale / 2f));
+                hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
+                if (hit)
+                {
+                    transform.Translate(Vector2.down * hit.distance);
+                }
+            }
+        }            
     }
 
     IEnumerator JumpBuffer()
