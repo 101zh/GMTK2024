@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public enum TileType { BLUE, RED, EMPTY, NULL };
+public enum PadType { BLUE, RED, EMPTY, NULL };
 
 public class TileMapTrigger : MonoBehaviour
 {
-    [SerializeField] private Tile usedUpTile;
-    [SerializeField] private string tileColor;
+    [SerializeField] private Tile usedUpPad;
+    [SerializeField] private string padColor;
 
     private Tilemap tilemap;
     [SerializeField] private List<TileLoc> tileLocations;
-    private TileType thisTileType;
-    private static TileType lastTileType = TileType.NULL;
+    private PadType thisTileMapPadType;
+    private static PadType lastPadType = PadType.NULL;
 
     // Use this for initialization
     void Start()
     {
-        if (tileColor.ToLower().Equals("blue")) { thisTileType = TileType.BLUE; }
-        else if (tileColor.ToLower().Equals("red")) { thisTileType = TileType.RED; }
+        if (padColor.ToLower().Equals("blue")) { thisTileMapPadType = PadType.BLUE; }
+        else if (padColor.ToLower().Equals("red")) { thisTileMapPadType = PadType.RED; }
         else { throw new System.Exception("Invalid Color Tile Type"); }
 
         tilemap = GetComponent<Tilemap>();
@@ -31,7 +31,7 @@ public class TileMapTrigger : MonoBehaviour
                 Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
                 if (tilemap.HasTile(localPlace))
                 {
-                    tileLocations.Add(new TileLoc(localPlace, usedUpTile));
+                    tileLocations.Add(new TileLoc(localPlace, usedUpPad));
                 }
             }
         }
@@ -56,18 +56,18 @@ public class TileMapTrigger : MonoBehaviour
             }
         }
 
-        if (!tileLocations[index].usedUp)
+        if (!tileLocations[index].empty)
         {
             tilemap.SetTile(tileLocations[index].loc, tileLocations[index].replacementTile);
-            tileLocations[index].usedUp = true;
-            lastTileType = thisTileType;
+            tileLocations[index].empty = true;
+            lastPadType = thisTileMapPadType;
         }
         else
         {
-            lastTileType = TileType.EMPTY;
+            lastPadType = PadType.EMPTY;
         }
 
-        Debug.Log(getLastTileTriggered());
+        Debug.Log(getLastPadTriggered());
     }
 
     [System.Serializable]
@@ -75,18 +75,25 @@ public class TileMapTrigger : MonoBehaviour
     {
         public Vector3Int loc;
         public Tile replacementTile;
-        public bool usedUp;
+        public bool empty;
 
         public TileLoc(Vector3Int loc, Tile replacementTile)
         {
             this.loc = loc;
-            usedUp = false;
+            empty = false;
+            this.replacementTile = replacementTile;
+        }
+
+        public TileLoc(Vector3Int loc, Tile replacementTile, bool empty)
+        {
+            this.loc = loc;
+            this.empty = empty;
             this.replacementTile = replacementTile;
         }
     }
 
-    public static TileType getLastTileTriggered()
+    public static PadType getLastPadTriggered()
     {
-        return lastTileType;
+        return lastPadType;
     }
 }
