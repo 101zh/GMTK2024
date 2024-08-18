@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     float moveInput;
     float moveInputPrev;
 
+    int facingDirection = 1;
+
     [Header("Scale")]
     public float defaultScale = 1.0f;
     public float bigScale = 1.5f;
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [Space(15)]
     public float horizontalSpeedThreshold = 0.0f;
 
+    bool shouldMove = false;
+
     float acceleration;
     float topSpeed;
     float deceleration;
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour
     float jumpForce;
 
     bool shouldJump;
+    bool isJumping;
     bool jumpBuffering = false;
 
     private void Awake()
@@ -86,9 +91,15 @@ public class PlayerController : MonoBehaviour
                 jumpBuffering = false;
                 shouldJump = true;
             }
+            if (isJumping && v.y <= 0)
+                isJumping = false;
         }
         else
             isGrounded = false;
+
+        // Stop Sliding
+        if (!shouldMove && !isJumping && isGrounded)
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space))
@@ -129,6 +140,14 @@ public class PlayerController : MonoBehaviour
 
         if (Mathf.Abs(moveInput) >= inputThreshold)
         {
+            if (!shouldMove)
+            {
+                rb.constraints = RigidbodyConstraints2D.None;
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+
+            shouldMove = true;
+
             float force = acceleration;
 
             // Apply Deceleration via Acceleration when quickly swapping directions.
@@ -152,6 +171,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (v.x != 0)
             {
+                shouldMove = false;
                 rb.velocity = new Vector2(0, v.y);
                 moveInputPrev = 0;
             }
@@ -160,7 +180,11 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         shouldJump = false;
+        isJumping = true;
         jumpBuffering = false; // Just in case
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
