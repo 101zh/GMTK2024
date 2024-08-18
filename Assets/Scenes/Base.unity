@@ -174,9 +174,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hitParticles: {fileID: 8639527888303866921, guid: 4430e61e6ceabe44aa7ec09295c30738, type: 3}
-  smallColor: {r: 1, g: 0.3066038, b: 0.3066038, a: 1}
+  smallColor: {r: 0.4669811, g: 0.7383873, b: 1, a: 1}
   defaultColor: {r: 0.43867922, g: 1, b: 0.45581874, a: 1}
-  largeColor: {r: 0.43867922, g: 0.59760743, b: 1, a: 1}
+  largeColor: {r: 1, g: 0.30588236, b: 0.30588236, a: 1}
+  gunBlue: {fileID: 2100000, guid: 1d74ef31c58d1744c848e17767cb1c7f, type: 2}
+  gunGreen: {fileID: 2100000, guid: efa7edc3cde40a74b8365af79be152f1, type: 2}
+  gunRed: {fileID: 2100000, guid: 0a7076eeb02295d4e9ba496f495db655, type: 2}
+  sr: {fileID: 1845162130}
   mode: 2
   rayVisibleTime: 0.1
 --- !u!120 &202188834

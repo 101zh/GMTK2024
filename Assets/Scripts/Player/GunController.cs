@@ -14,6 +14,11 @@ public class GunController : MonoBehaviour
     public Color defaultColor;
     public Color largeColor;
 
+    public Material gunBlue;
+    public Material gunGreen;
+    public Material gunRed;
+    public SpriteRenderer sr;
+
     // Mode 0 = Shrink
     // Mode 1 = Normal
     // Mode 2 = Grow
@@ -51,6 +56,30 @@ public class GunController : MonoBehaviour
 
         pOne = shootOrigin.position;
         lr.SetPosition(0, pOne);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            ModeChange(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            ModeChange(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            ModeChange(2);
+    }
+
+    public void ModeChange(int m)
+    {
+        mode = m;
+        switch (mode)
+        {
+            case 0:
+                sr.material = gunBlue;
+                break;
+            case 1:
+                sr.material = gunGreen;
+                break;
+            case 2:
+                sr.material = gunRed;
+                break;
+        }
     }
 
     void LookAtMouse()
