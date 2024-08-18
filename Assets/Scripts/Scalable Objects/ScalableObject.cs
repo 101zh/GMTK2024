@@ -20,21 +20,21 @@ public class ScalableObject : MonoBehaviour
         switch (size)
         {
             case 0:
-                transform.localScale = Vector2.one * smallScale;
+                transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * smallScale, Mathf.Sign(transform.localScale.y) * smallScale);
                 currentSize = 0;
 
                 prevScale = currentScale;
                 currentScale = smallScale;
                 break;
             case 1:
-                transform.localScale = Vector2.one * defaultScale;
+                transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * defaultScale, Mathf.Sign(transform.localScale.y) * defaultScale);
                 currentSize = 1;
 
                 prevScale = currentScale;
                 currentScale = defaultScale;
                 break;
             case 2:
-                transform.localScale = Vector2.one * bigScale;
+                transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * bigScale, Mathf.Sign(transform.localScale.y) * bigScale);
                 currentSize = 2;
 
                 prevScale = currentScale;
