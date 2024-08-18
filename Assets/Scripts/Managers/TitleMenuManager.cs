@@ -11,6 +11,7 @@ public class TitleMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text statsText;
     [SerializeField] private AudioMixer masterMixer;
     [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioManager audioManager;
 
     private void Start()
     {
@@ -25,14 +26,17 @@ public class TitleMenuManager : MonoBehaviour
         float masterVolume = PlayerPrefs.GetFloat("LastMasterVolume", 0.0f);
         refreshVolumeSlideTo(masterVolume);
 
+        audioManager.Play("TitleTheme");
     }
 
     public void OnStartButtonPress()
     {
+        StopTitleTheme();
         SceneManager.LoadScene("MainScene"); //TODO: load correct scene
     }
     public void OnSpeedrunButtonPress()
     {
+        StopTitleTheme();
         SceneManager.LoadScene("MainScene"); //TODO: load corrrect scene
     }
 
@@ -68,6 +72,11 @@ public class TitleMenuManager : MonoBehaviour
     private void refreshVolumeSlideTo(float value)
     {
         volumeSlider.value = value;
+    }
+
+    private void StopTitleTheme()
+    {
+        audioManager.Stop("TitleTheme");
     }
 
 }
