@@ -6317,7 +6317,7 @@ MonoBehaviour:
     charPerSec: 15
     leaveMessageForSeconds: 1.5
     clearTextBox: 1
-  - message: ME
+  - message: "ME (\u256F`\u25A1\u2032)\u256F\uFE35\u253B\u2501\u253B"
     charPerSec: 20
     leaveMessageForSeconds: 4
     clearTextBox: 1
