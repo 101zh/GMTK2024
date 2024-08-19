@@ -4398,6 +4398,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 365327101148415353, guid: f4dbf9b964b584442a7146332e4236ec, type: 3}
+      propertyPath: unlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1604167392934457055, guid: f4dbf9b964b584442a7146332e4236ec, type: 3}
       propertyPath: m_Name
       value: LevelProgressionKit
@@ -4412,11 +4416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8801217310344214911, guid: f4dbf9b964b584442a7146332e4236ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 8801217310344214911, guid: f4dbf9b964b584442a7146332e4236ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.02
       objectReference: {fileID: 0}
     - target: {fileID: 8801217310344214911, guid: f4dbf9b964b584442a7146332e4236ec, type: 3}
       propertyPath: m_LocalPosition.z
