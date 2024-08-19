@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private List<Message> messages;
 
+    private Coroutine dialogue;
     private bool doneTyping;
     AudioManager audioManager;
     GameObject kira;
@@ -26,7 +27,7 @@ public class LevelManager : MonoBehaviour
 
         kira = GameObject.FindGameObjectWithTag("Player");
 
-        StartCoroutine(writeDialogue());
+        dialogue = StartCoroutine(writeDialogue());
     }
 
     private void Update()
@@ -35,6 +36,14 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    public void restartDialogue(List<Message> newDialogue)
+    {
+        StopAllCoroutines();
+        textBox.text = " ";
+        messages = newDialogue;
+        dialogue = StartCoroutine(writeDialogue());
     }
 
     IEnumerator writeDialogue()
@@ -74,12 +83,12 @@ public class LevelManager : MonoBehaviour
         return doneTyping;
     }
 
-    [System.Serializable]
-    private class Message
-    {
-        public string message;
-        public float charPerSec = 15f;
-        public float leaveMessageForSeconds;
-        public bool clearTextBox = true;
-    }
+}
+[System.Serializable]
+public class Message
+{
+    public string message;
+    public float charPerSec = 15f;
+    public float leaveMessageForSeconds;
+    public bool clearTextBox = true;
 }
