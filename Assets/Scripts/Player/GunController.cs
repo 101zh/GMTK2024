@@ -23,7 +23,7 @@ public class GunController : MonoBehaviour
     Vector4 currentGlowColor;
 
     public Material OutlineMat;
-    public Material SpriteLitDefaultMat;    
+    public Material SpriteLitDefaultMat;
 
     PlayerController playerController;
 
@@ -67,12 +67,19 @@ public class GunController : MonoBehaviour
 
         pOne = shootOrigin.position;
         lr.SetPosition(0, pOne);
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            ModeChange(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            ModeChange(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            ModeChange(2);
+
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+        {
+            mode -= 1;
+            if (mode < 0) mode = 2;
+            ModeChange(mode);
+        }
+        if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyDown(KeyCode.X))
+        {
+            mode += 1;
+            if (mode > 2) mode = 0;
+            ModeChange(mode);
+        }
     }
 
     public void ModeChange(int m)
@@ -96,11 +103,11 @@ public class GunController : MonoBehaviour
     }
 
     void LookAtSelected()
-    {     
+    {
         var dir = selected.transform.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        if (Mathf.Abs(angle) > 100) 
+        if (Mathf.Abs(angle) > 100)
             transform.localScale = new Vector3(1, -1, 1);
         else
             transform.localScale = new Vector3(1, 1, 1);
@@ -110,11 +117,12 @@ public class GunController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, scalableLayer);
 
-        if (hit.collider != null )
+        if (hit.collider != null)
         {
             isHovering = true;
             playerController.isSelectingTarget = true;
-            if (selected != null && !hit.collider.gameObject.Equals(selected.gameObject)) { 
+            if (selected != null && !hit.collider.gameObject.Equals(selected.gameObject))
+            {
                 selected.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 selected.GetComponent<SpriteRenderer>().material = SpriteLitDefaultMat;
             }
