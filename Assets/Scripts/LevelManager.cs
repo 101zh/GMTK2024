@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || kira.transform.position.y < -7.0f)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
