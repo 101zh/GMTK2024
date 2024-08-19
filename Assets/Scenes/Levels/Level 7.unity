@@ -5813,7 +5813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc54c3e381ee9748855b8bf5ac3a9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedUpPad: {fileID: 11400000, guid: 151119c36ccc754459d90f38f3d1faae, type: 2}
+  usedUpPad: {fileID: 11400000, guid: 2de3b60d3ee8d7f4a8b884941b0339c5, type: 2}
   padColor: blue
   tileLocations: []
 --- !u!66 &1746702559
