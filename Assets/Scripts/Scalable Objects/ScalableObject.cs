@@ -10,7 +10,14 @@ public class ScalableObject : MonoBehaviour
     public float smallScale = 0.5f;
     int currentSize; // Int 0, 1, or 2
     float prevScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
-    float currentScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
+    float currentScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale'
+
+    Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Size 0 = Shrink
     // Size 1 = Normal
@@ -25,6 +32,8 @@ public class ScalableObject : MonoBehaviour
 
                 prevScale = currentScale;
                 currentScale = smallScale;
+
+                rb.mass = smallScale;
                 break;
             case 1:
                 transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * defaultScale, Mathf.Sign(transform.localScale.y) * defaultScale);
@@ -32,6 +41,8 @@ public class ScalableObject : MonoBehaviour
 
                 prevScale = currentScale;
                 currentScale = defaultScale;
+
+                rb.mass = defaultScale;
                 break;
             case 2:
                 transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * bigScale, Mathf.Sign(transform.localScale.y) * bigScale);
@@ -39,6 +50,8 @@ public class ScalableObject : MonoBehaviour
 
                 prevScale = currentScale;
                 currentScale = bigScale;
+
+                rb.mass = bigScale;
                 break;
         }
 
