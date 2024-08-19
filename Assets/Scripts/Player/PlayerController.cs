@@ -331,6 +331,13 @@ public class PlayerController : MonoBehaviour
                         hit.collider.transform.position.y < transform.position.y - (currentScale / 2f))
                         transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
                 }
+                else
+                {
+                    rb.constraints = RigidbodyConstraints2D.None;
+                    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    isGrounded = false;
+                    shouldMove = true;
+                }
             }
         }
     }
