@@ -2,12 +2,16 @@ using System.Collections;
 using System.Diagnostics;
 using System.Drawing;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     CapsuleCollider2D capCollider;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     public LayerMask groundLayer;
     public Transform groundDetectionOrigin;
@@ -60,16 +64,21 @@ public class PlayerController : MonoBehaviour
     public float jumpBufferTime;
     float jumpForce;
 
+    private enum AnimState {KiraIdle, KiraJump, KiraLand, KiraWalk };
+
     [HideInInspector]
     public bool shouldJump;
     [HideInInspector]
     public bool isJumping;
     bool jumpBuffering = false;
+    private string currentAnimationState;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentSize = 1;
         ChangeSize(1);
     }
@@ -83,6 +92,8 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         if (Mathf.Abs(moveInput) >= inputThreshold)
             moveInputPrev = moveInput;
+
+        updateAnimation(moveInput);
 
         // Ground Detection
         if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(currentScale * 0.2f, 0.1f * currentScale), 0, groundLayer))
@@ -297,4 +308,44 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(jumpBufferTime);
         jumpBuffering = false;
     }
+
+    private void updateAnimation(float dirX)
+    {
+        string state;
+
+        if (dirX > 0)
+        {
+            spriteRenderer.flipX = false;
+            state = nameof(AnimState.KiraWalk);
+        }
+        else if (dirX < 0)
+        {
+            spriteRenderer.flipX = true;
+            state = nameof(AnimState.KiraWalk);
+        }
+        else
+        {
+            state = nameof(AnimState.KiraIdle);
+        }
+
+        if (rb.velocity.y > 0.1f)
+        {
+            state = nameof(AnimState.KiraJump);
+        }
+        else if (rb.velocity.y < -0.1f)
+        {
+            state = nameof(AnimState.KiraLand);
+        }
+        ChangeAnimationState(state);
+    }
+
+    private void ChangeAnimationState(string newState)
+    {
+        if (currentAnimationState == newState) return;
+
+        animator.Play(newState);
+
+        currentAnimationState = newState;
+    }
+
 }
