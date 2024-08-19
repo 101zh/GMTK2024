@@ -67,6 +67,9 @@ public class TileMapTrigger : MonoBehaviour
             lastPadType = PadType.EMPTY;
         }
 
+        // Update Player
+        other.GetComponent<PlayerController>().ChangeSize(lastPadType);
+
         Debug.Log(getLastPadTriggered());
     }
 

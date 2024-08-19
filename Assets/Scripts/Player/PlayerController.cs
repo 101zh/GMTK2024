@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics;
+using System.Drawing;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
@@ -199,6 +200,19 @@ public class PlayerController : MonoBehaviour
     // Size 0 = Shrink
     // Size 1 = Normal
     // Size 2 = Grow
+    public void ChangeSize(PadType pType)
+    {
+        switch (pType)
+        {
+            case PadType.BLUE:
+                ChangeSize(0);
+                break;
+            case PadType.RED:
+                ChangeSize(2);
+                break;
+        }
+    }
+
     public void ChangeSize(int size)
     {
         switch (size)

@@ -17,7 +17,9 @@ public class GunController : MonoBehaviour
     public Material gunBlue;
     public Material gunGreen;
     public Material gunRed;
+    public Material gunNoGlow;
     public SpriteRenderer sr;
+    Vector4 currentGlowColor;
 
     // Mode 0 = Shrink
     // Mode 1 = Normal
@@ -32,12 +34,15 @@ public class GunController : MonoBehaviour
     Vector3 pOne = Vector3.zero;
     Vector3 pTwo = Vector3.zero;
 
+    public bool isShooting = false;
+
 
     LineRenderer lr;
 
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
+        ModeChange(0);
     }
 
     // Update is called once per frame
@@ -49,6 +54,7 @@ public class GunController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                StopCoroutine(Shoot());
                 StartCoroutine(Shoot());
                 selected.ChangeSize(mode);
             }
@@ -57,12 +63,15 @@ public class GunController : MonoBehaviour
         pOne = shootOrigin.position;
         lr.SetPosition(0, pOne);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            ModeChange(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            ModeChange(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            ModeChange(2);
+        if (!isShooting)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                ModeChange(0);
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                ModeChange(1);
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+                ModeChange(2);
+        }
     }
 
     public void ModeChange(int m)
@@ -80,14 +89,16 @@ public class GunController : MonoBehaviour
                 sr.material = gunRed;
                 break;
         }
+        currentGlowColor = sr.material.color;
     }
 
-    void LookAtMouse()
-    {
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+    void LookAtSelected()
+    {   
+        
+        var dir = selected.transform.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        if (Mathf.Abs(angle) > 100)
+        if (Mathf.Abs(angle) > 100) 
             transform.localScale = new Vector3(1, -1, 1);
         else
             transform.localScale = new Vector3(1, 1, 1);
@@ -101,7 +112,7 @@ public class GunController : MonoBehaviour
         {
             isHovering = true;
             selected = hit.collider.gameObject.GetComponent<ScalableObject>();
-            LookAtMouse();
+            LookAtSelected();
         }
         else
         {
@@ -114,9 +125,14 @@ public class GunController : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        isShooting = true;
+
+        sr.material.color = currentGlowColor * 5;
+
         yield return new WaitForEndOfFrame();
 
         lr.enabled = true;
+        sr.material.color = currentGlowColor * 10;
 
         pTwo = selected.gameObject.transform.position;
         lr.SetPosition(1, pTwo);
@@ -147,7 +163,14 @@ public class GunController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(rayVisibleTime);
-
         lr.enabled = false;
+
+        for (int i = 9; i > 0; i--)
+        {
+            sr.material.color = currentGlowColor * i;
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        isShooting = false;
     }
 }

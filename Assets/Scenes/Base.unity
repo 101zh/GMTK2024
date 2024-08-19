@@ -180,8 +180,9 @@ MonoBehaviour:
   gunBlue: {fileID: 2100000, guid: 1d74ef31c58d1744c848e17767cb1c7f, type: 2}
   gunGreen: {fileID: 2100000, guid: efa7edc3cde40a74b8365af79be152f1, type: 2}
   gunRed: {fileID: 2100000, guid: 0a7076eeb02295d4e9ba496f495db655, type: 2}
+  gunNoGlow: {fileID: 2100000, guid: 04f1ec9ffe221e84aa78ea169226f663, type: 2}
   sr: {fileID: 1845162130}
-  mode: 2
+  mode: 0
   rayVisibleTime: 0.1
 --- !u!120 &202188834
 LineRenderer:

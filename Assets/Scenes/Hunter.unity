@@ -172,7 +172,17 @@ MonoBehaviour:
   scalableLayer:
     serializedVersion: 2
     m_Bits: 64
+  hitParticles: {fileID: 0}
+  smallColor: {r: 0, g: 0, b: 0, a: 0}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  largeColor: {r: 0, g: 0, b: 0, a: 0}
+  gunBlue: {fileID: 0}
+  gunGreen: {fileID: 0}
+  gunRed: {fileID: 0}
+  gunNoGlow: {fileID: 0}
+  sr: {fileID: 0}
   mode: 2
+  rayVisibleTime: 0.5
 --- !u!1 &273315656
 GameObject:
   m_ObjectHideFlags: 0
