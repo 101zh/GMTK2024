@@ -50,7 +50,7 @@ public class ScalableObject : MonoBehaviour
         {
             case 0:
                 scaleDiff = smallScale - currentScale;
-                RaycastCheckSpace(smallScale / 2f);
+                RaycastCheckSpace(smallScale);
                 //transform.Translate(Vector2.up * (scaleDiff / 4f) + Vector2.up * 0.01f);
                 //transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * smallScale, Mathf.Sign(transform.localScale.y) * smallScale);
 
@@ -63,7 +63,7 @@ public class ScalableObject : MonoBehaviour
                 break;
             case 1:
                 scaleDiff = defaultScale - currentScale;
-                RaycastCheckSpace(defaultScale / 2f);
+                RaycastCheckSpace(defaultScale);
                 //transform.Translate(Vector2.up * (scaleDiff / 4f) + Vector2.up * 0.01f);
                 //transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * defaultScale, Mathf.Sign(transform.localScale.y) * defaultScale);
 
@@ -97,13 +97,21 @@ public class ScalableObject : MonoBehaviour
         RaycastHit2D l = Physics2D.Raycast(transform.position, Vector2.left * dist / 2f, 2f, groundLayer);
         RaycastHit2D d = Physics2D.Raycast(transform.position, Vector2.down * dist / 2f, 2f, groundLayer);
 
-        float rightLeft = (r.distance - l.distance);
-        float upDown = (u.distance - d.distance);
+        float rDist = r.distance > 0 ? Mathf.Min(r.distance, dist / 2f) : dist / 2f;
+        float lDist = l.distance > 0 ? Mathf.Min(l.distance, dist / 2f) : dist / 2f;
+        float uDist = u.distance > 0 ? Mathf.Min(u.distance, dist / 2f) : dist / 2f;
+        float dDist = d.distance > 0 ? Mathf.Min(d.distance, dist / 2f) : dist / 2f;
 
-        Debug.Log(r.distance + ", " + l.distance + ", " + u.distance + ", " + d.distance);
+        float rightLeft = (rDist - lDist);  
+        float upDown = (uDist - dDist);
 
-        transform.Translate(new Vector2(rightLeft, upDown));
+        Debug.Log(dist + " | " + rDist + ", " + lDist + ", " + uDist + ", " + dDist);
 
-        //transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * dist, Mathf.Sign(transform.localScale.y) * dist);
+        //if (((rDist <= currentScale / 2f + 0.1f && lDist <= currentScale / 2f + 0.1f) || (uDist <= currentScale / 2f + 0.1f && dDist <= currentScale / 2f + 0.1f)) && dist > currentScale)
+            //return;
+
+        transform.Translate(new Vector2(rightLeft / 2f, upDown / 2f));
+
+        transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * dist, Mathf.Sign(transform.localScale.y) * dist);
     }
 }

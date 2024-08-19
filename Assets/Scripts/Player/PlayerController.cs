@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviour
         float yOff = (currentScale / 5f);
 
         Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - (currentScale / 2f) + yOff);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 2f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 1f, groundLayer);
         if (hit)
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") || 
@@ -314,7 +314,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rayOrigin = new Vector2(transform.position.x + (capCollider.size.x / 2f), transform.position.y - (currentScale / 2f) + yOff);
-            hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
+            hit = Physics2D.Raycast(rayOrigin, Vector2.down, 1f, groundLayer);
             if (hit)
             {
                 if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") ||
@@ -324,7 +324,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rayOrigin = new Vector2(transform.position.x - (capCollider.size.x / 2f), transform.position.y - (currentScale / 2f));
-                hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
+                hit = Physics2D.Raycast(rayOrigin, Vector2.down, 1f, groundLayer);
                 if (hit)
                 {
                     if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") ||
