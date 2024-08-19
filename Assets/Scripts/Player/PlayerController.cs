@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField] private bool hasGun = true;
+    [HideInInspector] public bool isSelectingTarget = false;
     [SerializeField] private GameObject gun;
     private Vector3 gunScale = Vector3.one;
 
@@ -329,7 +330,8 @@ public class PlayerController : MonoBehaviour
             state = nameof(AnimState.KiraIdle);
         }
 
-        if (hasGun) gun.transform.localScale = gunScale;
+        if (hasGun && !isSelectingTarget) gun.transform.localScale = gunScale;
+        else if (hasGun) gun.transform.localScale = Vector3.one;
 
         if (rb.velocity.y > 0.1f)
         {

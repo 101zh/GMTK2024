@@ -96,8 +96,7 @@ public class GunController : MonoBehaviour
     }
 
     void LookAtSelected()
-    {   
-        
+    {     
         var dir = selected.transform.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -114,6 +113,7 @@ public class GunController : MonoBehaviour
         if (hit.collider != null )
         {
             isHovering = true;
+            playerController.isSelectingTarget = true;
             if (selected != null && !hit.collider.gameObject.Equals(selected.gameObject)) { 
                 selected.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 selected.GetComponent<SpriteRenderer>().material = SpriteLitDefaultMat;
@@ -134,6 +134,7 @@ public class GunController : MonoBehaviour
             selected = null;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(1, 1, 1);
+            playerController.isSelectingTarget = false;
         }
     }
 
