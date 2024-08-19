@@ -1693,6 +1693,41 @@ MonoBehaviour:
     loop: 1
     output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
     source: {fileID: 0}
+  - name: BlipSelect
+    clip: {fileID: 8300000, guid: d67e8d778e31f194c949f1095482b92e, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: LaserShoot
+    clip: {fileID: 8300000, guid: d0b975d52894a8440ac300bfcbac6695, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: a23a7659af5767243ba3796163c35e4b, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: Shrink
+    clip: {fileID: 8300000, guid: 872600cb8ebe88a44b1a972b34fd4da4, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: Grow
+    clip: {fileID: 8300000, guid: 9df2e973788959341bfdad8664cd4e9f, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
 --- !u!1 &1029950783
 GameObject:
   m_ObjectHideFlags: 0
