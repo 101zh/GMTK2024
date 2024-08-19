@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee10f53beb7fbd489e14dd2e734c9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   defaultScale: 1
   bigScale: 2
   smallScale: 0.5
