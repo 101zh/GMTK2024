@@ -140,6 +140,8 @@ public class GunController : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        playerController.audioManager.Play("LaserShoot");
+
         sr.material.color = currentGlowColor * 5;
 
         yield return new WaitForEndOfFrame();
@@ -156,18 +158,21 @@ public class GunController : MonoBehaviour
         switch (mode)
         {
             case 0:
+                playerController.audioManager.Play("Shrink");
                 lr.startColor = smallColor;
                 lr.endColor = smallColor;
                 particleSystemMain.startColor = smallColor;
                 particleSystemMain.startSize = 0.4f;
                 break;
             case 1:
+                playerController.audioManager.Play("NormalSize");
                 lr.startColor = defaultColor;
                 lr.endColor = defaultColor;
                 particleSystemMain.startColor = defaultColor;
                 particleSystemMain.startSize = 0.9f;
                 break;
             case 2:
+                playerController.audioManager.Play("Grow");
                 lr.startColor = largeColor;
                 lr.endColor = largeColor;
                 particleSystemMain.startColor = largeColor;
