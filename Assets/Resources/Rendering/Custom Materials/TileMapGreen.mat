@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TileMapWhite
+  m_Name: TileMapGreen
   m_Shader: {fileID: -6465566751694194690, guid: a52952076bc3ef14c8ea29992dd6b58f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -46,9 +46,9 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 4, g: 4, b: 4, a: 0}
+    - _Color: {r: 0, g: 3.9999998, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &7570621293858361619
+--- !u!114 &2573649170521059869
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
