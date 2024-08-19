@@ -182,6 +182,8 @@ MonoBehaviour:
   gunRed: {fileID: 2100000, guid: 0a7076eeb02295d4e9ba496f495db655, type: 2}
   gunNoGlow: {fileID: 2100000, guid: 04f1ec9ffe221e84aa78ea169226f663, type: 2}
   sr: {fileID: 1845162130}
+  OutlineMat: {fileID: 0}
+  SpriteLitDefaultMat: {fileID: 0}
   mode: 0
   rayVisibleTime: 0.1
 --- !u!120 &202188834
@@ -3688,6 +3690,7 @@ GameObject:
   - component: {fileID: 1167669174}
   - component: {fileID: 1167669176}
   - component: {fileID: 1167669175}
+  - component: {fileID: 1167669177}
   m_Layer: 0
   m_Name: Kira
   m_TagString: Player
@@ -3803,14 +3806,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52082ec0c479c4c46bd7a2fc1e8642c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
+  hasGun: 1
+  isSelectingTarget: 0
+  gun: {fileID: 202188831}
   groundLayer:
     serializedVersion: 2
     m_Bits: 72
   groundDetectionOrigin: {fileID: 2084516999}
+  isGrounded: 0
   inputThreshold: 0.05
   defaultScale: 1
   bigScale: 1.5
   smallScale: 0.5
+  currentScale: 1
   smallAcceleration: 50
   smallTopSpeed: 6
   smallDeceleration: 50
@@ -3821,12 +3830,15 @@ MonoBehaviour:
   bigTopSpeed: 2.5
   bigDeceleration: 20
   horizontalSpeedThreshold: 0
+  shouldMove: 0
   gravity: 3
   terminalVelocity: 20
   smallJumpForce: 7
   defaultJumpForce: 11
   bigJumpForce: 14
   jumpBufferTime: 0.12
+  shouldJump: 0
+  isJumping: 0
 --- !u!70 &1167669176
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3862,6 +3874,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.07052255}
   m_Size: {x: 0.31, y: 0.8589549}
   m_Direction: 0
+--- !u!95 &1167669177
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167669170}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75ee1c56c55f9ef4b828186f2c9c24c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1599826000
 GameObject:
   m_ObjectHideFlags: 0
@@ -14218,6 +14251,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
+--- !u!1001 &6169330938927684758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.317
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577498246577922122, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673204270971008481, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
+      propertyPath: m_Name
+      value: Battery
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e38f3660ea56b58408d93a827d2bbf81, type: 3}
 --- !u!1001 &6518357652432745146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14293,3 +14383,4 @@ SceneRoots:
   - {fileID: 1167669172}
   - {fileID: 4759228736818081240}
   - {fileID: 6518357652432745146}
+  - {fileID: 6169330938927684758}

@@ -48,8 +48,14 @@ public class GunController : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         playerController = transform.parent.GetComponent<PlayerController>();
+        BatteryTrigger.pickupBattery += OnPickupBattery;
 
         ModeChange(0);
+    }
+
+    private void OnPickupBattery()
+    {
+        Debug.Log("battery picked up by gun");
     }
 
     // Update is called once per frame
