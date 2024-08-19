@@ -4561,100 +4561,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1097477584
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1097477586}
-  - component: {fileID: 1097477585}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1097477585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097477584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095d2f9eb53b6f5498712bc393b3a004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: TitleTheme
-    clip: {fileID: 8300000, guid: 4a6c83f076b82694fb94ef0a94381e0f, type: 3}
-    volume: 0.75
-    pitch: 1
-    loop: 1
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
-  - name: MainTheme
-    clip: {fileID: 8300000, guid: adda3494dde87b14d92e2f6aca59711d, type: 3}
-    volume: 0.85
-    pitch: 1
-    loop: 1
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
-  - name: BlipSelect
-    clip: {fileID: 8300000, guid: d67e8d778e31f194c949f1095482b92e, type: 3}
-    volume: 0.85
-    pitch: 1
-    loop: 0
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
-  - name: LaserShoot
-    clip: {fileID: 8300000, guid: d0b975d52894a8440ac300bfcbac6695, type: 3}
-    volume: 0.85
-    pitch: 1
-    loop: 0
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
-  - name: Jump
-    clip: {fileID: 8300000, guid: a23a7659af5767243ba3796163c35e4b, type: 3}
-    volume: 0.85
-    pitch: 1
-    loop: 0
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
-  - name: Shrink
-    clip: {fileID: 8300000, guid: 872600cb8ebe88a44b1a972b34fd4da4, type: 3}
-    volume: 0.85
-    pitch: 1
-    loop: 0
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
-  - name: Grow
-    clip: {fileID: 8300000, guid: 9df2e973788959341bfdad8664cd4e9f, type: 3}
-    volume: 0.85
-    pitch: 1
-    loop: 0
-    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
-    source: {fileID: 0}
---- !u!4 &1097477586
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097477584}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.082359, y: -0.5434289, z: 3.028591}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1197973837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5315,6 +5221,107 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1732816360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732816362}
+  - component: {fileID: 1732816361}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1732816361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732816360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095d2f9eb53b6f5498712bc393b3a004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: TitleTheme
+    clip: {fileID: 8300000, guid: 4a6c83f076b82694fb94ef0a94381e0f, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 1
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: adda3494dde87b14d92e2f6aca59711d, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 1
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: BlipSelect
+    clip: {fileID: 8300000, guid: d67e8d778e31f194c949f1095482b92e, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: LaserShoot
+    clip: {fileID: 8300000, guid: d0b975d52894a8440ac300bfcbac6695, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: a23a7659af5767243ba3796163c35e4b, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: Shrink
+    clip: {fileID: 8300000, guid: 872600cb8ebe88a44b1a972b34fd4da4, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: Grow
+    clip: {fileID: 8300000, guid: 9df2e973788959341bfdad8664cd4e9f, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+  - name: NormalSize
+    clip: {fileID: 8300000, guid: 553cd95202478e644b44798f8feacc96, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
+--- !u!4 &1732816362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732816360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.082359, y: -0.5434289, z: 3.028591}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1799523771
 GameObject:
   m_ObjectHideFlags: 0
@@ -13322,7 +13329,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 546077541}
   - {fileID: 822235098}
-  - {fileID: 1097477586}
+  - {fileID: 1732816362}
   - {fileID: 944824482}
   - {fileID: 1599826002}
   - {fileID: 1668981856}

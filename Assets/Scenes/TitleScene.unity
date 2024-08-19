@@ -1728,6 +1728,13 @@ MonoBehaviour:
     loop: 0
     output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
     source: {fileID: 0}
+  - name: NormalSize
+    clip: {fileID: 8300000, guid: 553cd95202478e644b44798f8feacc96, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: b53bb69c4ae1d3d47adca7a2bb15baa8, type: 2}
+    source: {fileID: 0}
 --- !u!1 &1029950783
 GameObject:
   m_ObjectHideFlags: 0
