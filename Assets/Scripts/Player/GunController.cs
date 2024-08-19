@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GunController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GunController : MonoBehaviour
     public Material gunNoGlow;
     public SpriteRenderer sr;
     Vector4 currentGlowColor;
+
+    public Material OutlineMat;
+    public Material SpriteLitDefaultMat;    
 
     PlayerController playerController;
 
@@ -110,15 +114,23 @@ public class GunController : MonoBehaviour
         if (hit.collider != null )
         {
             isHovering = true;
+            if (selected != null && !hit.collider.gameObject.Equals(selected.gameObject)) { 
+                selected.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                selected.GetComponent<SpriteRenderer>().material = SpriteLitDefaultMat;
+            }
             selected = hit.collider.gameObject.GetComponent<ScalableObject>();
             selected.GetComponent<SpriteRenderer>().sortingOrder = 4;
+            selected.GetComponent<SpriteRenderer>().material = OutlineMat;
             LookAtSelected();
         }
         else
         {
             isHovering = false;
             if (selected != null)
+            {
                 selected.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                selected.GetComponent<SpriteRenderer>().material = SpriteLitDefaultMat;
+            }
             selected = null;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(1, 1, 1);
