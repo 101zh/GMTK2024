@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public enum PadType { BLUE, RED, EMPTY, NULL };
+public enum PadType { BLUE, RED, GREEN, EMPTY, NULL };
 
 public class TileMapTrigger : MonoBehaviour
 {
@@ -20,6 +20,7 @@ public class TileMapTrigger : MonoBehaviour
     {
         if (padColor.ToLower().Equals("blue")) { thisTileMapPadType = PadType.BLUE; }
         else if (padColor.ToLower().Equals("red")) { thisTileMapPadType = PadType.RED; }
+        else if (padColor.ToLower().Equals("green")) { thisTileMapPadType = PadType.GREEN; }
         else { throw new System.Exception("Invalid Color Tile Type"); }
 
         tilemap = GetComponent<Tilemap>();

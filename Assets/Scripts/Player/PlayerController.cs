@@ -248,6 +248,9 @@ public class PlayerController : MonoBehaviour
             case PadType.RED:
                 ChangeSize(2);
                 break;
+            case PadType.GREEN:
+                ChangeSize(1);
+                break;
         }
     }
 
