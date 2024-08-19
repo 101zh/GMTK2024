@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-
+    
     // Size 0 = Shrink
     // Size 1 = Normal
     // Size 2 = Grow

@@ -34,7 +34,8 @@ public class GunController : MonoBehaviour
 
     public float rayVisibleTime = 0.5f;
 
-    private bool canShoot;
+    [HideInInspector]
+    public bool canShoot;
     bool isHovering = false;
     ScalableObject selected = null;
 
@@ -57,6 +58,7 @@ public class GunController : MonoBehaviour
     private void OnPickupBattery()
     {
         canShoot = true;
+        ModeChange(mode);
         Debug.Log("battery picked up by gun");
     }
 
@@ -73,7 +75,6 @@ public class GunController : MonoBehaviour
             {
                 StopCoroutine(Shoot());
                 StartCoroutine(Shoot());
-                selected.ChangeSize(mode);
             }
         }
 
@@ -170,8 +171,10 @@ public class GunController : MonoBehaviour
         {
             canShoot = false;
 
-            playerController.audioManager.Play("LaserShoot");
+            selected.ChangeSize(mode);
 
+            playerController.audioManager.Play("LaserShoot");
+    
             sr.material.color = currentGlowColor * 5;
 
             yield return new WaitForEndOfFrame();

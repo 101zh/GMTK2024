@@ -12,8 +12,11 @@ public class BatteryTrigger : MonoBehaviour
     {
         if (!other.tag.Equals("Player")) return;
 
-        pickupBattery.Invoke();
-        Destroy(gameObject);
+        if (!other.GetComponent<PlayerController>().transform.GetChild(1).GetComponent<GunController>().canShoot)
+        {
+            pickupBattery.Invoke();
+            Destroy(gameObject);
+        }
     }
 
 }
