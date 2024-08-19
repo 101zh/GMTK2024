@@ -244,6 +244,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138f2883fc07ed54b980e1d3015a16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBox: {fileID: 1538253294}
+  messages:
+  - message: ' '
+    charPerSec: 15
+    leaveMessageForSeconds: 2
+    clearTextBox: 1
+  - message: "Please stop seeing through walls (\u256C\u2594\u76BF\u2594)"
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: Oooooooh ...
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: Yes ... there's a red tube
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: You have to be pretty tall to see that ...
+    charPerSec: 15
+    leaveMessageForSeconds: 3
+    clearTextBox: 1
+  - message: I don't know what blue one you're talking about
+    charPerSec: 30
+    leaveMessageForSeconds: 0.5
+    clearTextBox: 1
+  - message: ' '
+    charPerSec: 15
+    leaveMessageForSeconds: 15
+    clearTextBox: 1
+  - message: Hey ummm ... the order matters
+    charPerSec: 15
+    leaveMessageForSeconds: 3
+    clearTextBox: 1
 --- !u!4 &45163694
 Transform:
   m_ObjectHideFlags: 0
@@ -4046,6 +4080,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
+--- !u!114 &1538253294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+  m_PrefabInstance: {fileID: 950214741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1599826000
 GameObject:
   m_ObjectHideFlags: 0
