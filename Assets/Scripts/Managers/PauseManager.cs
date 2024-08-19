@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -42,15 +43,15 @@ public class PauseManager : MonoBehaviour
     public void Restart()
     {
         audioManager.Play("BlipSelect");
-        // TODO: Reload Scene
-        Resume(); // get rid of this
+        Resume();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
         audioManager.Play("BlipSelect");
-        // TODO: Go to main menu
-        Resume(); // get rid of this
+        Resume();
+        SceneManager.LoadScene("TitleScene");
     }
 
     void Pause()

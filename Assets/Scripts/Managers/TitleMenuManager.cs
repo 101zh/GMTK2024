@@ -32,12 +32,12 @@ public class TitleMenuManager : MonoBehaviour
     public void OnStartButtonPress()
     {
         StopTitleTheme();
-        SceneManager.LoadScene("MainScene"); //TODO: load correct scene
+        SceneManager.LoadScene("Level 1"); //TODO: load correct scene
     }
     public void OnSpeedrunButtonPress()
     {
         StopTitleTheme();
-        SceneManager.LoadScene("MainScene"); //TODO: load corrrect scene
+        SceneManager.LoadScene("Level 1"); //TODO: load corrrect scene
     }
 
     public void OnLevelSelectButtonPress()
