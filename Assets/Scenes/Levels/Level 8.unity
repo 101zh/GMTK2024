@@ -244,8 +244,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138f2883fc07ed54b980e1d3015a16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  messages: []
+  textBox: {fileID: 540398664}
+  messages:
+  - message: ' '
+    charPerSec: 15
+    leaveMessageForSeconds: 25
+    clearTextBox: 1
+  - message: You've already tried everything?
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: ........................
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: Why haven't you tried giving up?
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: LOL
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: Did you experience any feelings of insecurity?
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: 'No? '
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 0
+  - message: According to my research humans experience insecurity when laughed at
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: What a shame, that it didn't work
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
 --- !u!4 &45163694
 Transform:
   m_ObjectHideFlags: 0
@@ -915,6 +951,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44792ce4aa124b40b19b9e9dfbf2c42, type: 3}
+--- !u!114 &540398664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+  m_PrefabInstance: {fileID: 950214741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546077538
 GameObject:
   m_ObjectHideFlags: 0
