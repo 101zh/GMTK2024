@@ -26,6 +26,8 @@ public class TitleMenuManager : MonoBehaviour
         float masterVolume = PlayerPrefs.GetFloat("LastMasterVolume", 0.0f);
         refreshVolumeSlideTo(masterVolume);
 
+        if (audioManager == null)
+            audioManager = FindObjectOfType<AudioManager>();
         audioManager.Play("TitleTheme");
     }
 
