@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider2D capCollider;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    [HideInInspector]
+    public AudioManager audioManager;
 
     [SerializeField] private bool hasGun = true;
     [SerializeField] private GameObject gun;
@@ -74,12 +76,26 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentSize = 1;
-        ChangeSize(1);
+    }
+
+    private void Start()
+    {
+        transform.localScale = Vector2.one * defaultScale;
+        currentSize = 1;
+        acceleration = defaultAcceleration;
+        topSpeed = defaultTopSpeed;
+        deceleration = defaultDeceleration;
+        jumpForce = defaultJumpForce;
+
+        prevScale = currentScale;
+        currentScale = defaultScale;
+        transform.Translate(Vector2.up * ((currentScale - prevScale) / 2f));
     }
 
     // Update is called once per frame
@@ -129,6 +145,7 @@ public class PlayerController : MonoBehaviour
         }
         if (shouldJump)
         {
+            audioManager.Play("Jump");
             Jump();
         }
 
@@ -231,6 +248,7 @@ public class PlayerController : MonoBehaviour
         switch (size)
         {
             case 0:
+                audioManager.Play("Shrink");
                 transform.localScale = Vector2.one * smallScale;
                 currentSize = 0;
                 acceleration = smallAcceleration;
@@ -242,6 +260,7 @@ public class PlayerController : MonoBehaviour
                 currentScale = smallScale;
                 break;
             case 1:
+                audioManager.Play("NormalSize");
                 transform.localScale = Vector2.one * defaultScale;
                 currentSize = 1;
                 acceleration = defaultAcceleration;
@@ -253,6 +272,7 @@ public class PlayerController : MonoBehaviour
                 currentScale = defaultScale;
                 break;
             case 2:
+                audioManager.Play("Grow");
                 transform.localScale = Vector2.one * bigScale;
                 currentSize = 2;
                 acceleration = bigAcceleration;
