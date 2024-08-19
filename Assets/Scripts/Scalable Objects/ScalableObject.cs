@@ -55,6 +55,6 @@ public class ScalableObject : MonoBehaviour
                 break;
         }
 
-        transform.Translate(Vector2.up * ((currentScale - prevScale) / 4f));
+        transform.Translate(Vector2.up * ((currentScale - prevScale) / 4f) + Vector2.up * 0.01f);
     }
 }

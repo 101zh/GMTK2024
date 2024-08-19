@@ -175,8 +175,9 @@ public class GunController : MonoBehaviour
         }
 
         yield return new WaitForEndOfFrame();
-        //if (playerController.isGrounded)
-        playerController.RayMoveFloor();
+        yield return new WaitForEndOfFrame();
+        if (!playerController.shouldJump && !playerController.shouldMove && !playerController.isJumping)
+            playerController.RayMoveFloor();
 
         yield return new WaitForSeconds(rayVisibleTime);
         lr.enabled = false;
