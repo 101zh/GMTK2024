@@ -34,6 +34,7 @@ public class GunController : MonoBehaviour
 
     public float rayVisibleTime = 0.5f;
 
+    private bool canShoot;
     bool isHovering = false;
     ScalableObject selected = null;
 
@@ -55,6 +56,7 @@ public class GunController : MonoBehaviour
 
     private void OnPickupBattery()
     {
+        canShoot = true;
         Debug.Log("battery picked up by gun");
     }
 
@@ -62,7 +64,7 @@ public class GunController : MonoBehaviour
     void Update()
     {
         if (PauseManager.GameIsPaused) return;
-        
+
         CheckIfSelectingBlock();
 
         if (isHovering)
@@ -108,6 +110,11 @@ public class GunController : MonoBehaviour
             case 2:
                 sr.material = gunRed;
                 break;
+        }
+
+        if (!canShoot)
+        {
+            sr.material = gunNoGlow;
         }
         currentGlowColor = sr.material.color;
     }
@@ -159,53 +166,59 @@ public class GunController : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        playerController.audioManager.Play("LaserShoot");
-
-        sr.material.color = currentGlowColor * 5;
-
-        yield return new WaitForEndOfFrame();
-
-        lr.enabled = true;
-        sr.material.color = currentGlowColor * 10;
-
-        pTwo = selected.gameObject.transform.position;
-        lr.SetPosition(1, pTwo);
-
-        GameObject particle = Instantiate(hitParticles, pTwo, Quaternion.Euler(0, 0, 0));
-        var particleSystemMain = particle.GetComponent<ParticleSystem>().main;
-
-        switch (mode)
+        if (canShoot)
         {
-            case 0:
-                playerController.audioManager.Play("Shrink");
-                lr.startColor = smallColor;
-                lr.endColor = smallColor;
-                particleSystemMain.startColor = smallColor;
-                particleSystemMain.startSize = 0.4f;
-                break;
-            case 1:
-                playerController.audioManager.Play("NormalSize");
-                lr.startColor = defaultColor;
-                lr.endColor = defaultColor;
-                particleSystemMain.startColor = defaultColor;
-                particleSystemMain.startSize = 0.9f;
-                break;
-            case 2:
-                playerController.audioManager.Play("Grow");
-                lr.startColor = largeColor;
-                lr.endColor = largeColor;
-                particleSystemMain.startColor = largeColor;
-                particleSystemMain.startSize = 1.5f;
-                break;
-        }
+            canShoot = false;
 
-        yield return new WaitForSeconds(rayVisibleTime);
-        lr.enabled = false;
+            playerController.audioManager.Play("LaserShoot");
 
-        for (int i = 9; i > 0; i--)
-        {
-            sr.material.color = currentGlowColor * i;
-            yield return new WaitForSeconds(0.02f);
+            sr.material.color = currentGlowColor * 5;
+
+            yield return new WaitForEndOfFrame();
+
+            lr.enabled = true;
+            sr.material.color = currentGlowColor * 10;
+
+            pTwo = selected.gameObject.transform.position;
+            lr.SetPosition(1, pTwo);
+
+            GameObject particle = Instantiate(hitParticles, pTwo, Quaternion.Euler(0, 0, 0));
+            var particleSystemMain = particle.GetComponent<ParticleSystem>().main;
+
+            switch (mode)
+            {
+                case 0:
+                    playerController.audioManager.Play("Shrink");
+                    lr.startColor = smallColor;
+                    lr.endColor = smallColor;
+                    particleSystemMain.startColor = smallColor;
+                    particleSystemMain.startSize = 0.4f;
+                    break;
+                case 1:
+                    playerController.audioManager.Play("NormalSize");
+                    lr.startColor = defaultColor;
+                    lr.endColor = defaultColor;
+                    particleSystemMain.startColor = defaultColor;
+                    particleSystemMain.startSize = 0.9f;
+                    break;
+                case 2:
+                    playerController.audioManager.Play("Grow");
+                    lr.startColor = largeColor;
+                    lr.endColor = largeColor;
+                    particleSystemMain.startColor = largeColor;
+                    particleSystemMain.startSize = 1.5f;
+                    break;
+            }
+
+            yield return new WaitForSeconds(rayVisibleTime);
+            lr.enabled = false;
+
+            for (int i = 9; i > 0; i--)
+            {
+                sr.material.color = currentGlowColor * i;
+                yield return new WaitForSeconds(0.02f);
+            }
+            sr.material = gunNoGlow;
         }
     }
 }
