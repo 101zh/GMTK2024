@@ -478,6 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52082ec0c479c4c46bd7a2fc1e8642c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasGun: 1
+  gun: {fileID: 2613025639754374241}
   groundLayer:
     serializedVersion: 2
     m_Bits: 72

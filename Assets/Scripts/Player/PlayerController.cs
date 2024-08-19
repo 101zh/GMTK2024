@@ -1,10 +1,5 @@
 using System.Collections;
-using System.Diagnostics;
-using System.Drawing;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.U2D;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +7,10 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider2D capCollider;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private bool hasGun = true;
+    [SerializeField] private GameObject gun;
+    private Vector3 gunScale = Vector3.one;
 
     public LayerMask groundLayer;
     public Transform groundDetectionOrigin;
@@ -64,7 +63,7 @@ public class PlayerController : MonoBehaviour
     public float jumpBufferTime;
     float jumpForce;
 
-    private enum AnimState {KiraIdle, KiraJump, KiraLand, KiraWalk };
+    private enum AnimState { KiraIdle, KiraJump, KiraLand, KiraWalk };
 
     [HideInInspector]
     public bool shouldJump;
@@ -316,17 +315,21 @@ public class PlayerController : MonoBehaviour
         if (dirX > 0)
         {
             spriteRenderer.flipX = false;
+            gunScale.x = 1;
             state = nameof(AnimState.KiraWalk);
         }
         else if (dirX < 0)
         {
             spriteRenderer.flipX = true;
+            gunScale.x = -1;
             state = nameof(AnimState.KiraWalk);
         }
         else
         {
             state = nameof(AnimState.KiraIdle);
         }
+
+        if (hasGun) gun.transform.localScale = gunScale;
 
         if (rb.velocity.y > 0.1f)
         {

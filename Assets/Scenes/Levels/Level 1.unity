@@ -4569,13 +4569,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1330839290293169955, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330839290293169955, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
+      propertyPath: hasGun
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2530246283512509924, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.283
+      value: -6.07
       objectReference: {fileID: 0}
     - target: {fileID: 2530246283512509924, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.466
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 2530246283512509924, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4612,6 +4620,10 @@ PrefabInstance:
     - target: {fileID: 8835983538253322014, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
       propertyPath: m_Name
       value: Kira
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835983538253322014, guid: 8cc8c2dca2034e147a2c2930a0fb44b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
