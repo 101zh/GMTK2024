@@ -28,6 +28,8 @@ public class TitleMenuManager : MonoBehaviour
 
         if (audioManager == null)
             audioManager = FindObjectOfType<AudioManager>();
+
+        audioManager.Stop("MainTheme");
         audioManager.Play("TitleTheme");
     }
 
