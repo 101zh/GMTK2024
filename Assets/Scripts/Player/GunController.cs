@@ -40,6 +40,8 @@ public class GunController : MonoBehaviour
     Vector3 pOne = Vector3.zero;
     Vector3 pTwo = Vector3.zero;
 
+    Vector3 lastSelectedPos = Vector3.zero;
+
     LineRenderer lr;
 
     private void Start()
@@ -53,6 +55,8 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.GameIsPaused) return;
+        
         CheckIfSelectingBlock();
 
         if (isHovering)
@@ -129,6 +133,7 @@ public class GunController : MonoBehaviour
             selected = hit.collider.gameObject.GetComponent<ScalableObject>();
             selected.GetComponent<SpriteRenderer>().sortingOrder = 4;
             selected.GetComponent<SpriteRenderer>().material = OutlineMat;
+            lastSelectedPos = selected.transform.position;
             LookAtSelected();
         }
         else
@@ -187,11 +192,6 @@ public class GunController : MonoBehaviour
                 particleSystemMain.startSize = 1.5f;
                 break;
         }
-
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        if (!playerController.shouldJump && !playerController.shouldMove && !playerController.isJumping)
-            playerController.RayMoveFloor();
 
         yield return new WaitForSeconds(rayVisibleTime);
         lr.enabled = false;

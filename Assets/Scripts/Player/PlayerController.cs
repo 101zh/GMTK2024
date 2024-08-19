@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     public float smallScale = 0.5f;
     int currentSize; // Int 0, 1, or 2
     float prevScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
-    float currentScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
+    [HideInInspector]
+    public float currentScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
 
     [Header("Walking")]
     public float smallAcceleration;
@@ -102,6 +103,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.GameIsPaused) return;
+
         rb.gravityScale = gravity;
         Vector2 v = rb.velocity;
 
@@ -130,7 +133,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
 
         // Stop Sliding
-        if (!shouldMove && !isJumping && isGrounded && rb.constraints != RigidbodyConstraints2D.FreezeAll)
+        if (!shouldMove && !isJumping && isGrounded) // && rb.constraints != RigidbodyConstraints2D.FreezeAll
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             RayMoveFloor();
@@ -172,6 +175,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (PauseManager.GameIsPaused) return;
+
         // -- Horizontal Movement -- //
 
         Vector2 v = rb.velocity;
@@ -300,7 +305,9 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 2f, groundLayer);
         if (hit)
         {
-            transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") || 
+                hit.collider.transform.position.y < transform.position.y - (currentScale / 2f))
+                transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
         }
         else
         {
@@ -308,7 +315,9 @@ public class PlayerController : MonoBehaviour
             hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
             if (hit)
             {
-                transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+                    hit.collider.transform.position.y < transform.position.y - (currentScale / 2f))
+                    transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
             }
             else
             {
@@ -316,7 +325,9 @@ public class PlayerController : MonoBehaviour
                 hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
                 if (hit)
                 {
-                    transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+                        hit.collider.transform.position.y < transform.position.y - (currentScale / 2f))
+                        transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
                 }
             }
         }
