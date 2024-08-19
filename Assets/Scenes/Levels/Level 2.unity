@@ -9435,9 +9435,9 @@ Tilemap:
   - first: {x: -9, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 58
-      m_TileSpriteIndex: 58
-      m_TileMatrixIndex: 0
+      m_TileIndex: 43
+      m_TileSpriteIndex: 31
+      m_TileMatrixIndex: 3
       m_TileColorIndex: 41
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -13080,8 +13080,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 1be9398e6aae16a4bbd3c039a044bc1d, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7d81afc481cc6684ea69de44dccd06ec, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: d166c5f4965ab6d49a863b52a461fb36, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 3c7352cca75894e429ba7e31568d4e25, type: 2}
   - m_RefCount: 1
@@ -13110,7 +13110,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: d7c64bc066d8c2d4faab99fcdbde05c5, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 71153fe70ff64ae4a8d512fe8b924d90, type: 2}
-  - m_RefCount: 609
+  - m_RefCount: 608
     m_Data: {fileID: 11400000, guid: 033ad009251230943bfb6ead04b330af, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -13175,8 +13175,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -628247117, guid: 38769af65b38d2145bed59369de657a3, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1940051301, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1318815669, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 1
@@ -13229,10 +13229,10 @@ Tilemap:
     m_Data: {fileID: 454353899, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -351196749, guid: 38769af65b38d2145bed59369de657a3, type: 3}
-  - m_RefCount: 609
+  - m_RefCount: 608
     m_Data: {fileID: 619443574, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 658
+  - m_RefCount: 657
     m_Data:
       e00: 1
       e01: 0
@@ -13276,6 +13276,24 @@ Tilemap:
       e03: 0
       e10: 0
       e11: -1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - m_RefCount: 1
+    m_Data:
+      e00: 0
+      e01: 1
+      e02: 0
+      e03: 0
+      e10: -1
+      e11: 0
       e12: 0
       e13: 0
       e20: 0

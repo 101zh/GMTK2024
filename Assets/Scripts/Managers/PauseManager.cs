@@ -12,7 +12,7 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        pauseMenuUI = transform.GetChild(0).GetChild(0).gameObject;
+        pauseMenuUI = transform.GetChild(0).GetChild(1).gameObject;
         audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
