@@ -892,6 +892,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138f2883fc07ed54b980e1d3015a16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBox: {fileID: 1474525929}
+  messages:
+  - message: Curious about the window?
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: Yeah... yeah... red pads...
+    charPerSec: 20
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
+  - message: "You can read (\xAC_\xAC\u256C) "
+    charPerSec: 15
+    leaveMessageForSeconds: 1.5
+    clearTextBox: 1
 --- !u!4 &417947639
 Transform:
   m_ObjectHideFlags: 0
@@ -4881,6 +4895,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4dbf9b964b584442a7146332e4236ec, type: 3}
+--- !u!114 &1474525929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+  m_PrefabInstance: {fileID: 950214741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1599826000
 GameObject:
   m_ObjectHideFlags: 0
