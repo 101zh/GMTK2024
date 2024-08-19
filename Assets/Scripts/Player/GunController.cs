@@ -21,6 +21,8 @@ public class GunController : MonoBehaviour
     public SpriteRenderer sr;
     Vector4 currentGlowColor;
 
+    PlayerController playerController;
+
     // Mode 0 = Shrink
     // Mode 1 = Normal
     // Mode 2 = Grow
@@ -34,14 +36,13 @@ public class GunController : MonoBehaviour
     Vector3 pOne = Vector3.zero;
     Vector3 pTwo = Vector3.zero;
 
-    public bool isShooting = false;
-
-
     LineRenderer lr;
 
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
+        playerController = transform.parent.GetComponent<PlayerController>();
+
         ModeChange(0);
     }
 
@@ -62,20 +63,18 @@ public class GunController : MonoBehaviour
 
         pOne = shootOrigin.position;
         lr.SetPosition(0, pOne);
-
-        if (!isShooting)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                ModeChange(0);
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                ModeChange(1);
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-                ModeChange(2);
-        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            ModeChange(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            ModeChange(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            ModeChange(2);
     }
 
     public void ModeChange(int m)
     {
+        StopCoroutine(Shoot());
+
         mode = m;
         switch (mode)
         {
@@ -108,15 +107,18 @@ public class GunController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, scalableLayer);
 
-        if (hit.collider != null)
+        if (hit.collider != null )
         {
             isHovering = true;
             selected = hit.collider.gameObject.GetComponent<ScalableObject>();
+            selected.GetComponent<SpriteRenderer>().sortingOrder = 4;
             LookAtSelected();
         }
         else
         {
             isHovering = false;
+            if (selected != null)
+                selected.GetComponent<SpriteRenderer>().sortingOrder = 3;
             selected = null;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(1, 1, 1);
@@ -125,8 +127,6 @@ public class GunController : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        isShooting = true;
-
         sr.material.color = currentGlowColor * 5;
 
         yield return new WaitForEndOfFrame();
@@ -162,6 +162,10 @@ public class GunController : MonoBehaviour
                 break;
         }
 
+        yield return new WaitForEndOfFrame();
+        //if (playerController.isGrounded)
+        playerController.RayMoveFloor();
+
         yield return new WaitForSeconds(rayVisibleTime);
         lr.enabled = false;
 
@@ -170,7 +174,5 @@ public class GunController : MonoBehaviour
             sr.material.color = currentGlowColor * i;
             yield return new WaitForSeconds(0.02f);
         }
-
-        isShooting = false;
     }
 }

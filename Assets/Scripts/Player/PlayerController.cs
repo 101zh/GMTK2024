@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
     public Transform groundDetectionOrigin;
-    bool isGrounded = false;
+    public bool isGrounded = false;
 
     public float inputThreshold = 0.05f;
     float moveInput;
@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
     [Space(15)]
     public float horizontalSpeedThreshold = 0.0f;
 
-    bool shouldMove = false;
+    [HideInInspector]
+    public bool shouldMove = false;
 
     float acceleration;
     float topSpeed;
@@ -59,8 +60,10 @@ public class PlayerController : MonoBehaviour
     public float jumpBufferTime;
     float jumpForce;
 
-    bool shouldJump;
-    bool isJumping;
+    [HideInInspector]
+    public bool shouldJump;
+    [HideInInspector]
+    public bool isJumping;
     bool jumpBuffering = false;
 
     private void Awake()
@@ -255,24 +258,26 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector2.up * ((currentScale - prevScale) / 2f));
     }
 
-    void RayMoveFloor()
+    public void RayMoveFloor()
     {
         // Its a mess, i know
         // But it works
 
-        Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - (currentScale / 2f));
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
+        float yOff = (currentScale / 5f);
+
+        Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - (currentScale / 2f) + yOff);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 2f, groundLayer);
         if (hit)
         {
-            transform.Translate(Vector2.down * hit.distance);
+            transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
         }
         else
         {
-            rayOrigin = new Vector2(transform.position.x + (capCollider.size.x / 2f), transform.position.y - (currentScale / 2f));
+            rayOrigin = new Vector2(transform.position.x + (capCollider.size.x / 2f), transform.position.y - (currentScale / 2f) + yOff);
             hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
             if (hit)
             {
-                transform.Translate(Vector2.down * hit.distance);
+                transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
             }
             else
             {
@@ -280,7 +285,7 @@ public class PlayerController : MonoBehaviour
                 hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.3f, groundLayer);
                 if (hit)
                 {
-                    transform.Translate(Vector2.down * hit.distance);
+                    transform.Translate(Vector2.down * hit.distance + Vector2.up * yOff);
                 }
             }
         }
