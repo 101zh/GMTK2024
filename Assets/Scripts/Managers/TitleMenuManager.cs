@@ -11,7 +11,7 @@ public class TitleMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text statsText;
     [SerializeField] private AudioMixer masterMixer;
     [SerializeField] private Slider volumeSlider;
-    [SerializeField] private AudioManager audioManager;
+    private AudioManager audioManager;
 
     private void Start()
     {
