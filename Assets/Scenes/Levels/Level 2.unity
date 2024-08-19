@@ -6284,6 +6284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138f2883fc07ed54b980e1d3015a16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBox: {fileID: 0}
+  messages: []
 --- !u!4 &1979823226
 Transform:
   m_ObjectHideFlags: 0
