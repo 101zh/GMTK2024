@@ -7,9 +7,12 @@ public class PauseManager : MonoBehaviour
     public static bool GameIsPaused = false;
     GameObject pauseMenuUI;
 
+    AudioManager audioManager;
+
     private void Start()
     {
-            pauseMenuUI = transform.GetChild(0).GetChild(0).gameObject;
+        pauseMenuUI = transform.GetChild(0).GetChild(0).gameObject;
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class PauseManager : MonoBehaviour
 
     public void Resume()
     {
+        audioManager.Play("BlipSelect");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1.0f;
         GameIsPaused = false;
@@ -37,12 +41,14 @@ public class PauseManager : MonoBehaviour
 
     public void Restart()
     {
+        audioManager.Play("BlipSelect");
         // TODO: Reload Scene
         Resume(); // get rid of this
     }
 
     public void MainMenu()
     {
+        audioManager.Play("BlipSelect");
         // TODO: Go to main menu
         Resume(); // get rid of this
     }

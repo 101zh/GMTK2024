@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 267418689482449194}
   - component: {fileID: 1330839290293169955}
   - component: {fileID: 878373771485848047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Kira
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -478,7 +478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52082ec0c479c4c46bd7a2fc1e8642c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   hasGun: 1
+  isSelectingTarget: 0
   gun: {fileID: 2613025639754374241}
   groundLayer:
     serializedVersion: 2
@@ -489,6 +491,7 @@ MonoBehaviour:
   defaultScale: 1
   bigScale: 1.5
   smallScale: 0.5
+  currentScale: 1
   smallAcceleration: 50
   smallTopSpeed: 6
   smallDeceleration: 50

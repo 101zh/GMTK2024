@@ -127,13 +127,15 @@ public class PlayerController : MonoBehaviour
                 shouldJump = true;
             }
             if (isJumping && v.y <= 0)
+            {
                 isJumping = false;
+            }
         }
         else
             isGrounded = false;
 
         // Stop Sliding
-        if (!shouldMove && !isJumping && isGrounded) // && rb.constraints != RigidbodyConstraints2D.FreezeAll
+        if (!shouldMove && !isJumping) // && rb.constraints != RigidbodyConstraints2D.FreezeAll
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             RayMoveFloor();
