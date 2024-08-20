@@ -171,6 +171,8 @@ MonoBehaviour:
     leaveMessageForSeconds: 1.5
     clearTextBox: 1
   SelectionChoice: {fileID: 0}
+  declineScreen: {fileID: 0}
+  acceptScreen: {fileID: 0}
 --- !u!4 &225505158
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5540652085252985186, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6723381593470756952, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1204,19 +1210,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6723381593470756952, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 700
+      value: 231
       objectReference: {fileID: 0}
     - target: {fileID: 6723381593470756952, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 345
+      value: 491
       objectReference: {fileID: 0}
     - target: {fileID: 7533749536973703746, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 546077540}
     - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 744
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -98
       objectReference: {fileID: 0}
     - target: {fileID: 8516029252581018003, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_AnchorMax.y
