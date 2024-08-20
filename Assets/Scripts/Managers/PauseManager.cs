@@ -63,4 +63,10 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0;
         GameIsPaused = true;
     }
+
+    public void makeTheChoice(bool accept)
+    {
+        LevelManager.makeChoice(accept);
+    }
+
 }

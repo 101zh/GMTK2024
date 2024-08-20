@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-
+    [SerializeField] private bool isEndingScene;
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private List<Message> messages;
+    [SerializeField] private GameObject SelectionChoice;
 
     SceneTransition transition;
 
@@ -29,7 +30,15 @@ public class LevelManager : MonoBehaviour
 
         kira = GameObject.FindGameObjectWithTag("Player");
 
-        dialogue = StartCoroutine(writeDialogue());
+        if (isEndingScene)
+        {
+            audioManager.Stop("MainTheme");
+            StartCoroutine(EndingScene());
+        }
+        else
+        {
+            dialogue = StartCoroutine(writeDialogue());
+        }
     }
 
     private void Update()
@@ -48,14 +57,58 @@ public class LevelManager : MonoBehaviour
         dialogue = StartCoroutine(writeDialogue());
     }
 
+    IEnumerator EndingScene()
+    {
+        yield return new WaitForSeconds(1);
+        StartCoroutine(writeDialogue());
+        yield return new WaitUntil(DialogueIsDone);
+        Time.timeScale = 0.0f;
+        SelectionChoice.SetActive(true);
+        Time.timeScale = 1.0f;
+        yield return new WaitUntil(ChoiceMade);
+
+
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            transition.MoveIn(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            transition.MoveIn(0);
+        }
+
+    }
+
+    bool dialogueDone = false;
     IEnumerator writeDialogue()
     {
+        dialogueDone = false;
         foreach (Message message in messages)
         {
             StartCoroutine(typeOut(message));
             yield return new WaitUntil(IsDoneTyping);
         }
+        dialogueDone = true;
 
+    }
+
+    private static bool choiceMade = false;
+    private static bool acceptJob = false;
+
+    public static void makeChoice(bool accept)
+    {
+        choiceMade = true;
+        acceptJob = accept;
+    }
+
+    private bool ChoiceMade()
+    {
+        return choiceMade;
+    }
+
+    private bool DialogueIsDone()
+    {
+        return dialogueDone;
     }
 
     IEnumerator typeOut(Message message)
