@@ -9,7 +9,7 @@ public class SceneTransition : MonoBehaviour
     public float transTime = 1f;
     Animator anim;
 
-    [Header("Only Assign on Cutscene Level")]
+    [Header("Only Assign on End Level")]
     public int levelBeforeStop = 12;
     public int[] timerStopScenesIndex;
 
