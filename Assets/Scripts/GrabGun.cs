@@ -13,8 +13,8 @@ public class GrabGun : MonoBehaviour
     { 
         if (collision.gameObject.tag.Equals("Player"))
         {
-            collision.transform.GetChild(1).gameObject.SetActive(true);
             collision.gameObject.GetComponent<PlayerController>().hasGun = true;
+            collision.transform.GetChild(1).GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             Destroy(gameObject);
         }
     }
