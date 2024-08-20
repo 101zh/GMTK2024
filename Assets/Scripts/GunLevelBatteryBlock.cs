@@ -17,7 +17,7 @@ public class GunLevelBatteryBlock : MonoBehaviour
 
     IEnumerator WaitToGive()
     {
-        yield return new WaitForSeconds(38);
+        yield return new WaitForSeconds(36);
 
         Instantiate(Block, blockPos, Quaternion.Euler(0, 0, 0));
         foreach (GameObject b in Batteries)

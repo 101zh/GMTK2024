@@ -419,19 +419,28 @@ MonoBehaviour:
     charPerSec: 25
     leaveMessageForSeconds: 3
     clearTextBox: 1
-  - message: Use Q + E , or Z + C to cycle between the modes
+  - message: Use Q + E , or Z + X to cycle between the modes
     charPerSec: 20
     leaveMessageForSeconds: 4
     clearTextBox: 1
-  - message: 'Just like before: Red = Big, Green = Normal, Blue = Small'
+  - message: 'Just like before: Red=Big, Green=Normal, Blue=Small'
     charPerSec: 20
     leaveMessageForSeconds: 4
+    clearTextBox: 1
+  - message: 'I''ve been programmed to say this for legal reasons: '
+    charPerSec: 20
+    leaveMessageForSeconds: 1
+    clearTextBox: 0
+  - message: If any laws of physics are broken resulting in permament loss of company
+      objects, it is you're fault. Just reset the room.
+    charPerSec: 35
+    leaveMessageForSeconds: 5
     clearTextBox: 1
   - message: Got it?
     charPerSec: 20
     leaveMessageForSeconds: 1
     clearTextBox: 0
-  - message: Okay, prove it by getting out ofo here.
+  - message: ' Okay, prove it by getting out of here.'
     charPerSec: 20
     leaveMessageForSeconds: 3
     clearTextBox: 1
@@ -1849,11 +1858,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_text
-      value: Hello!
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -1917,7 +1934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -81
+      value: -56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
