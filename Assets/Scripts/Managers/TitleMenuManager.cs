@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,7 @@ public class TitleMenuManager : MonoBehaviour
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private GameObject LevelsLayoutGrid;
     [SerializeField] private GameObject LevelButtonPrefab;
+    [SerializeField] private SceneTransition transition;
 
     private AudioManager audioManager;
 
@@ -51,12 +53,12 @@ public class TitleMenuManager : MonoBehaviour
     public void OnStartButtonPress()
     {
         StopTitleTheme();
-        SceneManager.LoadScene("Level 1"); //TODO: load correct scene
+        transition.MoveIn(1);
     }
     public void OnSpeedrunButtonPress()
     {
         StopTitleTheme();
-        SceneManager.LoadScene("Level 1"); //TODO: load corrrect scene
+        transition.MoveIn(1); // TODO: Speedrun
     }
 
     public void OnQuitButtonPress()

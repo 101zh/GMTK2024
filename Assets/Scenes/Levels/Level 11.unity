@@ -419,6 +419,10 @@ MonoBehaviour:
     charPerSec: 25
     leaveMessageForSeconds: 3
     clearTextBox: 1
+  - message: Shoot these boxes by clicking on them.
+    charPerSec: 20
+    leaveMessageForSeconds: 3
+    clearTextBox: 1
   - message: Use Q + E , or Z + X to cycle between the modes
     charPerSec: 20
     leaveMessageForSeconds: 4
@@ -4818,6 +4822,7 @@ MonoBehaviour:
   - {fileID: 371993671}
   - {fileID: 1338002712}
   - {fileID: 2007021172}
+  waitTime: 36
 --- !u!4 &1388478842
 Transform:
   m_ObjectHideFlags: 0

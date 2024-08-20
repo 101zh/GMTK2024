@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private List<Message> messages;
 
+    SceneTransition transition;
+
     private Coroutine dialogue;
     private bool doneTyping;
     AudioManager audioManager;
@@ -18,6 +20,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transition = FindObjectOfType<SceneTransition>();
         audioManager = GameObject.FindObjectOfType<AudioManager>();
         if (!audioManager.IsPlaying("MainTheme"))
         {
@@ -33,7 +36,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) || kira.transform.position.y < -7.0f)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            transition.MoveIn(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

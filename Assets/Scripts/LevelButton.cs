@@ -9,10 +9,16 @@ public class LevelButton : MonoBehaviour
     private int buildIndex;
     private AudioManager audioManager;
     [SerializeField] private TMP_Text levelText;
+    SceneTransition transition;
+
+    private void Start()
+    {
+        transition = FindObjectOfType<SceneTransition>();
+    }
 
     public void OnLevelClick()
     {
-        SceneManager.LoadScene(buildIndex);
+        transition.MoveIn(buildIndex);
         audioManager.Stop("TitleTheme");
     }
 

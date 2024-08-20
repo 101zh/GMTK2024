@@ -160,19 +160,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(v.x, Mathf.Sign(v.y) * terminalVelocity);
         }
-
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            ChangeSize(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            ChangeSize(1);
-        }
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            ChangeSize(0);
-        }
     }
 
     private void FixedUpdate()

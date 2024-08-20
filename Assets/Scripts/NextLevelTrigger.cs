@@ -9,6 +9,13 @@ public class NextLevelTrigger : MonoBehaviour
 {
     public bool unlocked = false;
 
+    SceneTransition transition;
+
+    private void Start()
+    {
+        transition = FindObjectOfType<SceneTransition>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.tag.Equals("Player") || !unlocked) { return; }
@@ -22,11 +29,11 @@ public class NextLevelTrigger : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            transition.MoveIn(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
-            SceneManager.LoadScene("TitleScene");
+            transition.MoveIn(0);
         }
     }
 }

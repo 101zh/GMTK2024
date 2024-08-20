@@ -9,9 +9,11 @@ public class PauseManager : MonoBehaviour
     GameObject pauseMenuUI;
 
     AudioManager audioManager;
+    SceneTransition transition;
 
     private void Start()
     {
+        transition = FindObjectOfType<SceneTransition>();
         pauseMenuUI = transform.GetChild(0).GetChild(1).gameObject;
         audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
@@ -44,14 +46,14 @@ public class PauseManager : MonoBehaviour
     {
         audioManager.Play("BlipSelect");
         Resume();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        transition.MoveIn(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
         audioManager.Play("BlipSelect");
         Resume();
-        SceneManager.LoadScene("TitleScene");
+        transition.MoveIn(0);
     }
 
     void Pause()

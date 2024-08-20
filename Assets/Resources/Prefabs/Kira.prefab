@@ -64,6 +64,7 @@ MonoBehaviour:
   SpriteLitDefaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   mode: 0
   rayVisibleTime: 0.1
+  canShoot: 0
 --- !u!120 &5304683487659077698
 LineRenderer:
   serializedVersion: 2
@@ -505,7 +506,7 @@ MonoBehaviour:
   shouldMove: 0
   gravity: 3
   terminalVelocity: 20
-  smallJumpForce: 6
+  smallJumpForce: 7
   defaultJumpForce: 8.5
   bigJumpForce: 13
   jumpBufferTime: 0.12
