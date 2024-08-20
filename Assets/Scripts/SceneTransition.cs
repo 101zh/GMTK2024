@@ -25,7 +25,7 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     public void MoveAway()
     {
-        if (SceneManager.GetActiveScene().name.Equals("Level 1") && speedrunManager.speedrunning)
+        if (speedrunManager != null && SceneManager.GetActiveScene().name.Equals("Level 1") && speedrunManager.speedrunning)
         {
             speedrunManager.StartTime();
         }
