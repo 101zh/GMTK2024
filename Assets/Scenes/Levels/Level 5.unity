@@ -258,7 +258,7 @@ MonoBehaviour:
     charPerSec: 15
     leaveMessageForSeconds: 1.5
     clearTextBox: 1
-  - message: You know what happen to rich old people...
+  - message: You know what happens to rich old people...
     charPerSec: 15
     leaveMessageForSeconds: 1.5
     clearTextBox: 1

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AudioManager audioManager;
 
-    [SerializeField] private bool hasGun = true;
+    public bool hasGun = true;
     [HideInInspector] public bool isSelectingTarget = false;
     [SerializeField] private GameObject gun;
     private Vector3 gunScale = Vector3.one;

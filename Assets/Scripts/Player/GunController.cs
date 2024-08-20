@@ -35,7 +35,7 @@ public class GunController : MonoBehaviour
     public float rayVisibleTime = 0.5f;
 
     [HideInInspector]
-    public bool canShoot;
+    public bool canShoot = false;
     bool isHovering = false;
     ScalableObject selected = null;
 
