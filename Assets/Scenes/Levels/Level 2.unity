@@ -695,8 +695,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Blue Pads Shrink (only) People
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 95031a03cf4488240ba7ac4ac1c21fdc, type: 2}
-  m_sharedMaterial: {fileID: -4954066724637774413, guid: 95031a03cf4488240ba7ac4ac1c21fdc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 07243149b9e14c74a97990a934dd84c2, type: 2}
+  m_sharedMaterial: {fileID: 1544267873209448322, guid: 07243149b9e14c74a97990a934dd84c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -785,7 +785,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4954066724637774413, guid: 95031a03cf4488240ba7ac4ac1c21fdc, type: 2}
+  - {fileID: 1544267873209448322, guid: 07243149b9e14c74a97990a934dd84c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
