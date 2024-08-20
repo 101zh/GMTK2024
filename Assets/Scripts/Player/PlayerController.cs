@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         // Ground Detection
         if (Physics2D.OverlapBox(groundDetectionOrigin.position, new Vector2(currentScale * 0.2f, 0.1f * currentScale), 0, groundLayer))
-        {
+        {   
             isGrounded = true;
 
             // Jump Buffer Check
@@ -155,10 +155,15 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
-        // Clamp Falling Speed
+        // Clamp Falling + Jump Speed
         if (Mathf.Abs(v.y) > terminalVelocity)
         {
             rb.velocity = new Vector2(v.x, Mathf.Sign(v.y) * terminalVelocity);
+        }
+
+        if (v.y > jumpForce)
+        {
+            rb.velocity = new Vector2(v.x, jumpForce);
         }
     }
 
