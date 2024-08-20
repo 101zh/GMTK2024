@@ -14,6 +14,8 @@ public class ScalableObject : MonoBehaviour
     float prevScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale
     float currentScale = 1.0f; // Float equal to either smallScale, defaultScale, or bigScale'
 
+    public int startSize = 1;
+
     Vector2 startPos;
     Quaternion startRotation;
 
@@ -24,6 +26,7 @@ public class ScalableObject : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startRotation = transform.rotation;
         startPos = transform.position;
+        ChangeSize(startSize);
     }
 
     private void Update()

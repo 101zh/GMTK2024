@@ -1500,6 +1500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu Pack
       objectReference: {fileID: 0}
+    - target: {fileID: 3894795381062181170, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5300398801245256466, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10877,8 +10881,8 @@ Tilemap:
   - first: {x: -14, y: 4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 37
+      m_TileIndex: 57
+      m_TileSpriteIndex: 57
       m_TileMatrixIndex: 0
       m_TileColorIndex: 41
       m_TileObjectToInstantiateIndex: 65535
@@ -12912,8 +12916,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 656beb80cfb8a8a489eb1981cf193898, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: d166c5f4965ab6d49a863b52a461fb36, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 5a8d69451e0fd8341aedec1e0dae8ff2, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 023b3114ecee14c4a8020a44047216be, type: 2}
   - m_RefCount: 1
@@ -12950,7 +12954,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 86fcf5fdd9a63d445b64e3e09be0e09e, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d7c64bc066d8c2d4faab99fcdbde05c5, type: 2}
-  - m_RefCount: 604
+  - m_RefCount: 605
     m_Data: {fileID: 11400000, guid: 0308367403a871948a574a8cdaeef76b, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 71153fe70ff64ae4a8d512fe8b924d90, type: 2}
@@ -13029,8 +13033,8 @@ Tilemap:
     m_Data: {fileID: -661859680, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -1940051301, guid: 38769af65b38d2145bed59369de657a3, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 407999529, guid: 38769af65b38d2145bed59369de657a3, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1628201869, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 6
@@ -13069,7 +13073,7 @@ Tilemap:
     m_Data: {fileID: -208299347, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1285527438, guid: 38769af65b38d2145bed59369de657a3, type: 3}
-  - m_RefCount: 604
+  - m_RefCount: 605
     m_Data: {fileID: -1815794754, guid: 38769af65b38d2145bed59369de657a3, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -241810329, guid: 38769af65b38d2145bed59369de657a3, type: 3}
