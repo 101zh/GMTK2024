@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;

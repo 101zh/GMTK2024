@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using TMPro;
-using UnityEditor.XR;
 
 public class SpeedrunManager : MonoBehaviour
 {
