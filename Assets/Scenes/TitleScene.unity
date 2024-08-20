@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2326247282414769638, guid: 384c2ef020d4f544988b5e6aa67c8b88, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1438234126}
     - target: {fileID: 2754471509951331831, guid: 384c2ef020d4f544988b5e6aa67c8b88, type: 3}
       propertyPath: m_fontSize
       value: 30
@@ -192,11 +196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3707189364272101268, guid: 384c2ef020d4f544988b5e6aa67c8b88, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -650
+      value: -740
       objectReference: {fileID: 0}
     - target: {fileID: 3707189364272101268, guid: 384c2ef020d4f544988b5e6aa67c8b88, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 400
+      value: 433
       objectReference: {fileID: 0}
     - target: {fileID: 4632101304351693553, guid: 384c2ef020d4f544988b5e6aa67c8b88, type: 3}
       propertyPath: speedrunning
