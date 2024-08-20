@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138f2883fc07ed54b980e1d3015a16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndingScene: 0
   textBox: {fileID: 540398664}
   messages:
   - message: Might need to use that new fancy gun of yours.
@@ -242,6 +243,7 @@ MonoBehaviour:
     charPerSec: 20
     leaveMessageForSeconds: 6
     clearTextBox: 1
+  SelectionChoice: {fileID: 0}
 --- !u!4 &45163694
 Transform:
   m_ObjectHideFlags: 0
@@ -1254,6 +1256,18 @@ PrefabInstance:
     - target: {fileID: 5540652085252985186, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757001128230647961, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: levelBeforeStop
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757001128230647961, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: timerStopScenesIndex.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757001128230647961, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: timerStopScenesIndex.Array.data[0]
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7533749536973703746, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_Camera

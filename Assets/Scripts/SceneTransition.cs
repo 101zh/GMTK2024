@@ -9,6 +9,10 @@ public class SceneTransition : MonoBehaviour
     public float transTime = 1f;
     Animator anim;
 
+    [Header("Only Assign on Cutscene Level")]
+    public int levelBeforeStop = 12;
+    public int[] timerStopScenesIndex;
+
     SpeedrunManager speedrunManager;    
 
     void Start()
@@ -30,8 +34,9 @@ public class SceneTransition : MonoBehaviour
 
     public void MoveIn(int scene)
     {
-        if (scene == 0 && speedrunManager.speedrunning && SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings-1)
-            speedrunManager.stop = true;
+        foreach (int i in timerStopScenesIndex)
+            if (scene == i)
+                speedrunManager.stop = true;
 
         anim.Play("TransMoveIn");
         StartCoroutine(WaitToLoad(scene));
