@@ -268,7 +268,7 @@ MonoBehaviour:
     clearTextBox: 1
   - message: I don't know what blue one you're talking about
     charPerSec: 30
-    leaveMessageForSeconds: 0.5
+    leaveMessageForSeconds: 1.5
     clearTextBox: 1
   - message: ' '
     charPerSec: 15
@@ -1317,10 +1317,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5540652085252985186, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7533749536973703746, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 546077540}
+    - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 862.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -162.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -26,7 +26,7 @@ public class ScalableObject : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startRotation = transform.rotation;
         startPos = transform.position;
-        ChangeSize(startSize);
+        ChangeSize(startSize, false);
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class ScalableObject : MonoBehaviour
     // Size 0 = Shrink
     // Size 1 = Normal
     // Size 2 = Grow
-    public void ChangeSize(int size)
+    public void ChangeSize(int size, bool repose = true)
     {
         float scaleDiff;
 
@@ -50,7 +50,7 @@ public class ScalableObject : MonoBehaviour
         {
             case 0:
                 scaleDiff = smallScale - currentScale;
-                RaycastCheckSpace(smallScale);
+                if (repose) RaycastCheckSpace(smallScale);
                 //transform.Translate(Vector2.up * (scaleDiff / 4f) + Vector2.up * 0.01f);
                 //transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * smallScale, Mathf.Sign(transform.localScale.y) * smallScale);
 
@@ -63,7 +63,7 @@ public class ScalableObject : MonoBehaviour
                 break;
             case 1:
                 scaleDiff = defaultScale - currentScale;
-                RaycastCheckSpace(defaultScale);
+                if (repose) RaycastCheckSpace(defaultScale);
                 //transform.Translate(Vector2.up * (scaleDiff / 4f) + Vector2.up * 0.01f);
                 //transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * defaultScale, Mathf.Sign(transform.localScale.y) * defaultScale);
 
@@ -76,7 +76,7 @@ public class ScalableObject : MonoBehaviour
                 break;
             case 2:
                 scaleDiff = bigScale - currentScale;
-                RaycastCheckSpace(bigScale);
+                if (repose) RaycastCheckSpace(bigScale);
                 //transform.Translate(Vector2.up * (scaleDiff / 4f) + Vector2.up * 0.01f);
                 //transform.localScale = new Vector2(Mathf.Sign(transform.localScale.x) * bigScale, Mathf.Sign(transform.localScale.y) * bigScale);
 

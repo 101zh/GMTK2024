@@ -493,15 +493,15 @@ MonoBehaviour:
   bigScale: 1.5
   smallScale: 0.5
   currentScale: 1
-  smallAcceleration: 30
-  smallTopSpeed: 6
-  smallDeceleration: 50
+  smallAcceleration: 20
+  smallTopSpeed: 5.5
+  smallDeceleration: 80
   defaultAcceleration: 20
   defaultTopSpeed: 5
-  defaultDeceleration: 50
+  defaultDeceleration: 80
   bigAcceleration: 15
   bigTopSpeed: 2.5
-  bigDeceleration: 20
+  bigDeceleration: 40
   horizontalSpeedThreshold: 0
   shouldMove: 0
   gravity: 3

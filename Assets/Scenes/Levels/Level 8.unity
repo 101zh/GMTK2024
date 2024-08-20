@@ -254,8 +254,8 @@ MonoBehaviour:
     charPerSec: 15
     leaveMessageForSeconds: 1.5
     clearTextBox: 1
-  - message: ........................
-    charPerSec: 15
+  - message: ...
+    charPerSec: 2
     leaveMessageForSeconds: 1.5
     clearTextBox: 1
   - message: Why haven't you tried giving up?
@@ -916,11 +916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4604228054277161569, guid: e44792ce4aa124b40b19b9e9dfbf2c42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.25
+      value: 6.259
       objectReference: {fileID: 0}
     - target: {fileID: 4604228054277161569, guid: e44792ce4aa124b40b19b9e9dfbf2c42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.75
+      value: 2.737
       objectReference: {fileID: 0}
     - target: {fileID: 4604228054277161569, guid: e44792ce4aa124b40b19b9e9dfbf2c42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1202,11 +1202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.75
+      value: 5.759
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.75
+      value: 2.737
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1467,6 +1467,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_margin.z
+      value: -121.350464
+      objectReference: {fileID: 0}
+    - target: {fileID: 409911620313575600, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 3894795381062181170, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_Name
       value: Pause Menu Pack
@@ -1511,10 +1519,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5540652085252985186, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7533749536973703746, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 546077540}
+    - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 692
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566820677957185411, guid: 2d79fdbe11361ef40a2eaf4308f55f5b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -163
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5276,11 +5296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.25
+      value: 6.259
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2.237
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6635,11 +6655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.75
+      value: 5.759
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2.237
       objectReference: {fileID: 0}
     - target: {fileID: 5032774050997605787, guid: 7ee72583363f21c4b993e4fdad865854, type: 3}
       propertyPath: m_LocalPosition.z
