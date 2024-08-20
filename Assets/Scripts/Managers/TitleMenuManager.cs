@@ -21,13 +21,13 @@ public class TitleMenuManager : MonoBehaviour
 
     private void Start()
     {
-        float bestTime = PlayerPrefs.GetFloat("BestTime", -1.0f);
+        float bestTime = PlayerPrefs.GetFloat("BestTimeFloat", -1.0f);
         string bestTimeString = "";
         if (bestTime > 0.0f)
         {
-            bestTimeString = bestTime.ToString();
+            bestTimeString = PlayerPrefs.GetString("BestTimeString", "--:--:--:---");
+            statsText.text = $"Quickest Time ★:\n{bestTimeString}";
         }
-        statsText.text = $"Quickest Time ★:\n{bestTimeString}";
 
         float masterVolume = PlayerPrefs.GetFloat("LastMasterVolume", 0.0f);
         refreshVolumeSlideTo(masterVolume);
@@ -57,8 +57,10 @@ public class TitleMenuManager : MonoBehaviour
     }
     public void OnSpeedrunButtonPress()
     {
+        FindObjectOfType<SpeedrunManager>().speedrunning = true;
+
         StopTitleTheme();
-        transition.MoveIn(1); // TODO: Speedrun
+        transition.MoveIn(1);
     }
 
     public void OnQuitButtonPress()

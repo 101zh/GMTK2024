@@ -52,6 +52,7 @@ public class PauseManager : MonoBehaviour
     public void MainMenu()
     {
         audioManager.Play("BlipSelect");
+        FindObjectOfType<SpeedrunManager>().QuitRun();
         Resume();
         transition.MoveIn(0);
     }

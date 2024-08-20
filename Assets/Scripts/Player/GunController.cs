@@ -19,7 +19,7 @@ public class GunController : MonoBehaviour
     public Material gunGreen;
     public Material gunRed;
     public Material gunNoGlow;
-    public SpriteRenderer sr;
+    SpriteRenderer sr;
     Vector4 currentGlowColor;
 
     public Material OutlineMat;
@@ -51,6 +51,7 @@ public class GunController : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         playerController = transform.parent.GetComponent<PlayerController>();
         BatteryTrigger.pickupBattery += OnPickupBattery;
+        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         ModeChange(0);
     }
@@ -97,7 +98,13 @@ public class GunController : MonoBehaviour
 
     public void ModeChange(int m)
     {
-        StopCoroutine(Shoot());
+        // StopCoroutine(Shoot());
+
+        if (sr == null)
+        {
+            Debug.LogWarning("SpriteRenderer is null.");
+            return;
+        }
 
         mode = m;
         switch (mode)
