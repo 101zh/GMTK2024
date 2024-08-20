@@ -8,6 +8,7 @@ public class GunLevelBatteryBlock : MonoBehaviour
     public GameObject Block;
     public Vector2 blockPos;
     public GameObject[] Batteries;
+    public float waitTime = 36;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class GunLevelBatteryBlock : MonoBehaviour
 
     IEnumerator WaitToGive()
     {
-        yield return new WaitForSeconds(36);
+        yield return new WaitForSeconds(waitTime);
 
         Instantiate(Block, blockPos, Quaternion.Euler(0, 0, 0));
         foreach (GameObject b in Batteries)
