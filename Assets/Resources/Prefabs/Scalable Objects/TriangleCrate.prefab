@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6454036428196335619}
   m_Layer: 6
   m_Name: TriangleCrate
-  m_TagString: Untagged
+  m_TagString: Triangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,9 +150,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  slipMat: {fileID: 6200000, guid: 13551cd952db1a34cbd2997c1f62c1c2, type: 2}
+  crateMat: {fileID: 6200000, guid: 13551cd952db1a34cbd2997c1f62c1c2, type: 2}
   defaultScale: 1
   bigScale: 2
   smallScale: 0.5
+  startSize: 1
 --- !u!50 &6454036428196335619
 Rigidbody2D:
   serializedVersion: 4

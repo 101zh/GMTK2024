@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScalableObject : MonoBehaviour
 {
     public LayerMask groundLayer;
+    public PhysicsMaterial2D slipMat;
+    public PhysicsMaterial2D crateMat;
 
     [Header("Scale")]
     public float defaultScale = 1.0f;
@@ -88,6 +90,13 @@ public class ScalableObject : MonoBehaviour
                 rb.mass = bigScale;
                 break;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.tag.Equals("Triangle")) rb.sharedMaterial = slipMat;
+        else
+            rb.sharedMaterial = crateMat;    
     }
 
     void RaycastCheckSpace(float dist)
