@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private List<Message> messages;
     [SerializeField] private GameObject SelectionChoice;
+    [SerializeField] private GameObject declineScreen;
+    [SerializeField] private GameObject acceptScreen;
 
     SceneTransition transition;
 
@@ -66,6 +68,13 @@ public class LevelManager : MonoBehaviour
         SelectionChoice.SetActive(true);
         Time.timeScale = 1.0f;
         yield return new WaitUntil(ChoiceMade);
+
+        SelectionChoice.SetActive(false);
+
+        acceptScreen.SetActive(acceptJob);
+        declineScreen.SetActive(!acceptJob);
+
+        yield return new WaitForSeconds(2.5f);
 
 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
