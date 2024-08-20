@@ -36,19 +36,15 @@ public class TitleMenuManager : MonoBehaviour
         audioManager.Stop("MainTheme");
         audioManager.Play("TitleTheme");
 
-        int index = 0;
         int count = 1;
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            if (scene.path.Contains("level", System.StringComparison.OrdinalIgnoreCase))
             {
                 LevelButton levelButton = Instantiate(LevelButtonPrefab, LevelsLayoutGrid.transform).GetComponent<LevelButton>();
-                levelButton.Init(count, index, audioManager);
+                levelButton.Init(count, i, audioManager);
                 count++;
             }
-            index++;
         }
-
 
     }
 
