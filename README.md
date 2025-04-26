@@ -29,3 +29,9 @@ This the repository for a puzzle video game created for GMTK2024
 ## Credits
 Game development 101zh, Dr. Jovo\
 Music & Sprites: 101zh
+
+## Copyright
+
+Copyright (c) 2025 101zh & Dr. Jovo
+
+You should have received a copy of the [licence](LICENSE) along with this program. If not, see https://github.com/101zh/GMTK2024/blob/main/LICENSE
